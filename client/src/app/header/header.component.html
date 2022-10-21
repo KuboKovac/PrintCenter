@@ -5,9 +5,8 @@
     </div>
     <div class="col buttons">
       <div>
-        <button (click)="openLogin()">Login</button>
-        <button (click)="openRegister()">Register</button>
-        <mat-slide-toggle>Dark mode</mat-slide-toggle>
+        <mat-slide-toggle (change)="switchTheme()"
+        [checked] = 'theme === "dark-theme"'>{{theme === 'light-theme' ? 'Dark' : 'Light'}}</mat-slide-toggle>
       </div>
     </div>
   </div>

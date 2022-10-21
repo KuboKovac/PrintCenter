@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {LoginComponent} from "../auth/login/login.component";
-import {RegisterComponent} from "../auth/register/register.component";
+import {Component, Inject, OnInit, Renderer2} from '@angular/core';
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-header',
@@ -10,14 +8,25 @@ import {RegisterComponent} from "../auth/register/register.component";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  theme: any = localStorage.getItem('theme')
+
+  constructor(@Inject(DOCUMENT)
+              private document: Document,
+              private renderer: Renderer2) {
+  }
 
   ngOnInit(): void {
+    this.initTheme()
   }
-  openLogin(){
-    this.dialog.open(LoginComponent)
+
+  initTheme(): void {
+    this.renderer.addClass(this.document.body, this.theme)
+    localStorage.setItem('theme', this.theme)
   }
-  openRegister(){
-    this.dialog.open(RegisterComponent)
+
+  switchTheme() {
+    this.document.body.classList.replace(this.theme,
+      this.theme === 'light-theme' ? (this.theme = 'dark-theme') : (this.theme = "light-theme"))
+    localStorage.setItem('theme', this.theme)
   }
 }
