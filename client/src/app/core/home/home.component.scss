@@ -1,0 +1,22 @@
+.bg-layout{
+  position: relative;
+}
+.bg-img{
+  width: 100%;
+  margin: 10px 0 10px;
+  padding: 0;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+.overlay{
+  position: absolute;
+  width: min-content;
+  margin: 20% 10% 0;
+}
+h1{
+  font-size: 100px;
+  color: #FFD600;
+}
+h2{
+  color: white;
+}
