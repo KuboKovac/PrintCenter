@@ -11,11 +11,11 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$client-primary: mat.define-palette(mat.$red-palette);
-$client-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
+$client-primary: mat.define-palette(mat.$yellow-palette);
+$client-accent: mat.define-palette(mat.$yellow-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$client-warn: mat.define-palette(mat.$red-palette);
+$client-warn: mat.define-palette(mat.$yellow-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -47,26 +47,57 @@ body {
 
 
 //_________________________________________________________________________
-//                      CUSTOM CSS
+//                      CUSTOM GLOBAL CSS
 //_________________________________________________________________________
+$A100: #FFFF8D;
+$A200: #FFFF00;
+$A400: #FFEA00;
+$A700: #FFD600;
+
+$C900: #F57F17;
+$C700: #ffedaf;
+
+$BG-LIGHT: #fff5e3;
+$BG-DARK: #2f2f2f;
+
 
 .light-theme {
-  transition: ease-in-out 100ms;
+  transition: ease-in-out 350ms;
+  background-color: $BG-LIGHT;
+  color: rgb(0 0 0);
 
-  a {
-    color: rgb(0 0 0);
-    text-decoration: none;
+  .fluid-bg {
+    background-color: $A700;
   }
+  .button{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: $A100;
+    transition: ease-in-out 350ms;
+  }
+  .button:hover{
+    background-color: white;
+  }
+
 }
 
+
 .dark-theme {
-  transition: ease-in-out 100ms;
-  background-color: #252525;
+  transition: ease-in-out 350ms;
+  background-color: $BG-DARK;
   color: rgb(255 255 255);
 
-  a {
-    color: rgb(255 255 255);
-    text-decoration: none;
+  .fluid-bg {
+    background-color: $A700;
+    color: black;
+  }
+  .button{
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: ease-in-out 350ms;
+  }
+  .button:hover{
+    background-color: white;
   }
 }
 

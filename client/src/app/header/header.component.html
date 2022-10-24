@@ -4,10 +4,8 @@
       <H1>Print Center</H1>
     </div>
     <div class="col buttons">
-      <div>
-        <mat-slide-toggle (change)="switchTheme()"
-        [checked] = 'theme === "dark-theme"'>{{theme === 'light-theme' ? 'Dark' : 'Light'}}</mat-slide-toggle>
-      </div>
+      <mat-slide-toggle (change)="switchTheme()"
+                        [checked]='theme === "dark-theme"'>{{theme === 'light-theme' ? 'Dark' : 'Light'}}</mat-slide-toggle>
     </div>
   </div>
 </div>

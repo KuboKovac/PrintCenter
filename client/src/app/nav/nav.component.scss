@@ -1,13 +1,19 @@
-.nav-item{
-  margin: 10px 30px 10px;
+.fluid-bg{
+  border-bottom: 1px solid black;
 }
-a{
+.nav-item{
+  transition: ease 250ms;
+  font-size: 18px;
   margin: 10px 30px 10px;
-
+  cursor: pointer;
+}
+.nav-item:hover{
+  transform: scale(110%);
+  color: white;
 }
 .button{
-  width: min-content;
-  margin: 0 5px 0;
+  width: 100px;
+  margin: 1%;
 }
 .buttons{
   margin: 0 10px 0;

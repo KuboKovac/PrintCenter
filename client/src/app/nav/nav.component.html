@@ -1,16 +1,18 @@
-<div class="nav row">
-  <div class="col">
-    <ul class="nav">
-      <li><a routerLink="home">Home</a></li>
-      <li><a routerLink="store">Store</a></li>
-      <li><a routerLink="forum">Forum</a></li>
-      <li><a routerLink="models">Models</a></li>
-    </ul>
-  </div>
-  <div class="col">
-    <div class="row justify-content-end buttons">
-      <button class="button">Login</button>
-      <button class="button">Register</button>
+<div class="container-fluid fluid-bg">
+  <div class="row">
+    <div class="col">
+      <ul class="nav">
+        <li class="nav-item" routerLink="home">Home</li>
+        <li class="nav-item"routerLink="store">Store</li>
+        <li class="nav-item"routerLink="forum">Forum</li>
+        <li class="nav-item" routerLink="models">Models</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="row justify-content-end buttons">
+        <button class="button" (click)="login()">Login</button>
+        <button class="button" (click)="register()">Register</button>
+      </div>
     </div>
   </div>
 </div>
