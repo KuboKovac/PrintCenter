@@ -57,7 +57,7 @@ $A700: #FFD600;
 $C900: #F57F17;
 $C700: #ffedaf;
 
-$BG-LIGHT: #fff0be;
+$BG-LIGHT: #fff3e0;
 $BG-DARK: #464646;
 
 
@@ -67,6 +67,9 @@ $BG-DARK: #464646;
 
   .fluid-bg {
     background-color: $A700;
+  }
+  .footer-bg{
+    background-color: #5d5d5d;
   }
   .button{
     border: 1px solid black;
@@ -90,6 +93,9 @@ $BG-DARK: #464646;
   .fluid-bg {
     background-color: $A700;
     color: black;
+  }
+  .footer-bg{
+    background-color: $BG-DARK;
   }
   .button{
     background-color: $A100;
