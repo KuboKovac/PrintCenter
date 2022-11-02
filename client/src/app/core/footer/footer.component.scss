@@ -1,15 +1,13 @@
 .container-fluid{
+  margin: 50px 0 0;
+  position: relative;
   bottom: 0;
 }
 .fluid-bg{
   border-bottom: 2px solid black;
 }
 p{
-  width: min-content;
-  color: white;
-}
-.p-altered{
-  color: #FFFF00;
+  text-align: center;
 }
 h1{
   text-align: center;
@@ -18,17 +16,4 @@ h1{
 .footer-content{
   text-align: center;
   margin: 10px 0 0;
-}
-.row{
-  justify-content: center;
-  flex-wrap: nowrap;
-}
-@media only screen and (max-width: 800px){
-  h1{
-    scale: 75%;
-  }
-  p{
-    scale: 75%;
-    margin: 0;
-  }
 }

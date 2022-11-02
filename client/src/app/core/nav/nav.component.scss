@@ -13,21 +13,9 @@
   color: white;
 }
 .button{
-  transition: ease-in-out 250ms;
   width: 100px;
   margin: 1%;
 }
-.button:hover{
-  transform: scale(103%);
-}
 .buttons{
   margin: 0 10px 0;
-}
-.row{
-  align-items: center;
-}
-@media only screen and (max-width: 600px) {
-  .nav-item{
-    margin: 5px;
-  }
 }
