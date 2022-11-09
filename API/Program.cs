@@ -1,4 +1,12 @@
+using API;
+
+
+//USER DB
+using var db = new UserContext();
+
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
