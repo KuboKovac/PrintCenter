@@ -1,12 +1,13 @@
 ﻿using API.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace API;
 
 public class UserContext: DbContext
 {
-    public DbSet<User> User { get; set; }
+    public UserContext(DbContextOptions<UserContext> options) : base(options)
+    {
+        
+    }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite("Data source=user.db");
-}
+    public DbSet<User> Users => Set<User>();
+} 

@@ -10,17 +10,34 @@ namespace API.Controllers;
 public class AuthController:ControllerBase
 {
     public static User user = new User();
-    
+    private readonly UserContext _userContext;
+
+    public AuthController(UserContext userContext)
+    {
+        _userContext = userContext;
+
+    }
+
     [HttpPost("register")]
     public async Task<ActionResult<User>> Register(RegisterDto request)
     {
         HashPassword(request.password, out byte[] passwordHash, out byte[] passwordSalt);
-        user.username = request.username;
-        user.passwordHash = passwordHash;
-        user.passwordSalt = passwordSalt;
-
-        return Ok(user);
+        
+        _userContext.Users.Add(new User
+        {
+            username = request.username,
+            firstName = request.firstName,
+            lastName = request.lastName,
+            email = request.email,
+            passwordHash = passwordHash,
+            passwordSalt = passwordSalt
+        });
+        await _userContext.SaveChangesAsync();
+        
+        return Ok("User successfully registered!");
     }
+    
+    
     [HttpPost("login")]
     public async Task<ActionResult<User>> Login(LoginDto request)
     {
