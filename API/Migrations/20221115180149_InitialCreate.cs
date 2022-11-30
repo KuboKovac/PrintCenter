@@ -31,7 +31,6 @@ namespace API.Migrations
                     table.PrimaryKey("PK_Users", x => x.userId);
                 });
         }
-
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
