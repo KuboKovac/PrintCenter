@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RegisterModel} from "../models/registerModel";
 
 @Component({
   selector: 'app-register',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  register: RegisterModel = new RegisterModel('','','','','');
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  public onSubmit(){
+    //TODO
+  }
+
 
 }
