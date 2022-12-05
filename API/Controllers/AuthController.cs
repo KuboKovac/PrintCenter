@@ -81,8 +81,6 @@ public class AuthController : ControllerBase
         }
         return BadRequest("Username or password is wrong");
     }
-
-
     private void HashPassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
         using (var hmac = new HMACSHA512())
