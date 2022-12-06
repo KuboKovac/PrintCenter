@@ -1,5 +1,5 @@
-.fluid-bg{
-  border-top: 2px solid black;
+button{
+  margin: 0 10px 0;
 }
 .nav-item{
   transition: ease 250ms;
@@ -12,10 +12,6 @@
   transform: scale(110%);
   color: white;
 }
-.button{
-  width: 100px;
-  margin: 1%;
-}
-.buttons{
-  margin: 0 10px 0;
+.spacer{
+  flex: 1 1 auto;
 }

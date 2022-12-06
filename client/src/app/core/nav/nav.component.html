@@ -1,18 +1,7 @@
-<div class="container-fluid fluid-bg">
-  <div class="row">
-    <div class="col">
-      <ul class="nav">
-        <li class="nav-item" routerLink="home">HOME</li>
-        <li class="nav-item"routerLink="store">STORE</li>
-        <li class="nav-item"routerLink="forum">FORUM</li>
-        <li class="nav-item" routerLink="models">MODELS</li>
-      </ul>
-    </div>
-    <div class="col">
-      <div class="row justify-content-end buttons">
-        <button class="button" (click)="login()">Login</button>
-        <button class="button" (click)="register()">Register</button>
-      </div>
-    </div>
-  </div>
-</div>
+<mat-toolbar color="primary">
+  <p class="nav-item" routerLink="home">HOME</p>
+  <p class="nav-item" routerLink="store">STORE</p>
+  <span class="spacer"></span>
+  <button mat-raised-button color="accent" (click)="login()">LOGIN</button>
+  <button mat-raised-button color="accent" (click)="register()">REGISTER</button>
+</mat-toolbar>

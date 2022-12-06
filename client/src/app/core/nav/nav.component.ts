@@ -16,11 +16,15 @@ export class NavComponent implements OnInit {
   }
 
   login(){
-    this.dialog.open(LoginComponent)
+    this.dialog.open(LoginComponent, {
+      panelClass: 'custom-modal-box'
+    })
   }
 
   register(){
-    this.dialog.open(RegisterComponent)
+    this.dialog.open(RegisterComponent, {
+      panelClass: 'custom-modal-box'
+    })
   }
 
 }

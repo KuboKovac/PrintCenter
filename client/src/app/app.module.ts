@@ -14,6 +14,9 @@ import {ForumModule} from "./forum/forum.module";
 import {ModelsModule} from "./models/models.module";
 import {MatDialogModule} from "@angular/material/dialog";
 import {HomeComponent} from './core/home/home.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -23,20 +26,23 @@ import {HomeComponent} from './core/home/home.component';
     HeaderComponent,
     HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    NoopAnimationsModule,
-    AuthModule,
-    StoreModule,
-    ForumModule,
-    ModelsModule,
+    imports: [
+        BrowserModule,
+        NgbModule,
+        NoopAnimationsModule,
+        AuthModule,
+        StoreModule,
+        ForumModule,
+        ModelsModule,
 
-    MatSlideToggleModule,
-    MatDialogModule,
+        MatSlideToggleModule,
+        MatDialogModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
 
-    AppRoutingModule,
-  ],
+        AppRoutingModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
