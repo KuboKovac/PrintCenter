@@ -1,1 +1,52 @@
-<p>register works!</p>
+<h2>Register</h2>
+
+<form>
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" name="username" [(ngModel)]="register.username">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" type="email" name="email" [(ngModel)]="register.email">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" name="firstName" [(ngModel)]="register.firstName">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last name" name="lastName" [(ngModel)]="register.lastName">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="register.password">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>Repeat password</mat-label>
+          <input matInput placeholder="Repeat password" type="password" name="password">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Register</button>
+</form>

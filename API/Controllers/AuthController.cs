@@ -71,7 +71,7 @@ public class AuthController : ControllerBase
                 if (VerifyHash(request.password, user.passwordHash, user.passwordSalt))
                 {
                     var token = GenerateToken(user);
-                    return Ok(new TokenDto(token));
+                    return Ok(new TokenDto(request.username ,token));
                 }
                 else
                 {
@@ -81,8 +81,6 @@ public class AuthController : ControllerBase
         }
         return BadRequest("Username or password is wrong");
     }
-
-
     private void HashPassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
         using (var hmac = new HMACSHA512())
