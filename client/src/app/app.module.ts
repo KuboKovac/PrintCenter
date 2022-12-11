@@ -17,6 +17,7 @@ import {HomeComponent} from './core/home/home.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import { AccountDetailComponent } from './account-detail/account-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatButtonModule} from "@angular/material/button";
     NavComponent,
     FooterComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    AccountDetailComponent
   ],
     imports: [
         BrowserModule,
@@ -40,6 +42,7 @@ import {MatButtonModule} from "@angular/material/button";
         MatToolbarModule,
         MatIconModule,
         MatButtonModule,
+        MatIconModule,
 
         AppRoutingModule,
     ],

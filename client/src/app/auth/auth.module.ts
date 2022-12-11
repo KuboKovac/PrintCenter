@@ -6,9 +6,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatDialogModule} from "@angular/material/dialog";
+import {AuthInterceptor} from "./auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -25,14 +26,17 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatSnackBarModule,
     MatDialogModule,
 
-
     FormsModule
   ],
   exports: [
     LoginComponent,
     RegisterComponent
-  ]
-
+  ],
+  providers:[{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }]
 })
 export class AuthModule {
 

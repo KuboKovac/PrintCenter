@@ -52,22 +52,20 @@ body {
 $A100: #8dfffb;
 $A200: #0033ff;
 $A400: #00fff7;
+$A500: #3F51B5;
 $A700: #006fff;
-
-$C900: #F57F17;
-$C700: #ffedaf;
 
 $BG-LIGHT: #ffffff;
 $BG-DARK: #464646;
-
 
 .light-theme {
   transition: ease-in-out 350ms;
   background-color: $BG-LIGHT;
 
   .fluid-bg {
-    background-color: $A700;
+    background-color: $A500;
   }
+
   .custom-modal-box {
     mat-dialog-container {
       background-color: $BG-LIGHT;
@@ -81,9 +79,20 @@ $BG-DARK: #464646;
   color: rgb(255 255 255);
 
   .fluid-bg {
-    background-color: $A700;
+    background-color: $A500;
     color: black;
   }
+  h1,h2{
+    color: white;
+  }
+  mat-form-field
+  {
+    color: white;
+  }
+  mat-label{
+    color: #c8c8c8;
+  }
+
   .custom-modal-box {
     mat-dialog-container {
       background-color: $BG-DARK;

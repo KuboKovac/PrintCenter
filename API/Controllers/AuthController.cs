@@ -71,7 +71,7 @@ public class AuthController : ControllerBase
                 if (VerifyHash(request.password, user.passwordHash, user.passwordSalt))
                 {
                     var token = GenerateToken(user);
-                    return Ok(new TokenDto(token));
+                    return Ok(new TokenDto(request.username ,token));
                 }
                 else
                 {

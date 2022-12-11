@@ -2,6 +2,13 @@
   <p class="nav-item" routerLink="home">HOME</p>
   <p class="nav-item" routerLink="store">STORE</p>
   <span class="spacer"></span>
-  <button mat-raised-button color="accent" (click)="login()">LOGIN</button>
-  <button mat-raised-button color="accent" (click)="register()">REGISTER</button>
+  <div *ngIf="username else elseBlock">
+    <button routerLink="account-detail" mat-icon-button><mat-icon>account_circle</mat-icon></button>
+    <button mat-raised-button color="accent" (click)="logout()">LOGOUT</button>
+  </div>
+
+  <ng-template #elseBlock>
+    <button mat-raised-button color="accent" (click)="login()">LOGIN</button>
+    <button mat-raised-button color="accent" (click)="register()">REGISTER</button>
+  </ng-template>
 </mat-toolbar>

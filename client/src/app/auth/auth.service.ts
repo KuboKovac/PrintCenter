@@ -2,10 +2,11 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {LoginModel} from "./models/loginModel";
 import {environment} from "../../environments/environment";
-import {catchError, EMPTY, map, Observable} from "rxjs";
+import {catchError, EMPTY, map, Observable, Subject} from "rxjs";
 import {MessageService} from "./message.service";
 import {TokenModel} from "./models/tokenModel";
 import {RegisterModel} from "./models/registerModel";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,36 +14,58 @@ import {RegisterModel} from "./models/registerModel";
 export class AuthService {
 
   private url = environment.baseUrl
-
+  usernameSubject = new Subject<string>()
   constructor(
     private http: HttpClient,
-    private msgService: MessageService
-    ) { }
+    private msgService: MessageService,
+    private router: Router
+  ) {
+  }
 
-  set token(value: string | null){
-    if (value){
+  set token(value: string | null) {
+    if (value) {
       localStorage.setItem('Jwt', value)
-    }
-    else{
+    } else {
       localStorage.removeItem('Jwt')
     }
   }
-  get token(): string | null{
+
+  get token(): string | null {
     return localStorage.getItem('Jwt')
   }
 
-  public login(login: LoginModel): Observable<TokenModel>{
+  set username(value: string) {
+    if (value) {
+      localStorage.setItem('username', value)
+    } else {
+      localStorage.removeItem('username')
+    }
+    this.usernameSubject.next(value)
+  }
+  get username(): string {
+    return localStorage.getItem('username') || '';
+  }
+  public usernameChanges(): Observable<string>{
+    return this.usernameSubject.asObservable()
+  }
+
+  public login(login: LoginModel): Observable<TokenModel> {
     return this.http.post<TokenModel>(this.url + 'Auth/login', login).pipe(
-      map(token  => {
-        this.token = token.token
+      map(response => {
+        this.username = response.username
+        this.token = response.token
         this.msgService.message('Logged in successfully')
         return new TokenModel(this.token)
       }),
       catchError(err => this.errHandler(err))
     )
   }
-
-  public register(register: RegisterModel): Observable<boolean>{
+  public logout(){
+    this.username = ''
+    this.token = ''
+    this.router.navigateByUrl('/')
+  }
+  public register(register: RegisterModel): Observable<boolean> {
     return this.http.post(this.url + 'Auth/register', register, {responseType: 'text'}).pipe(
       map(response => {
         this.msgService.message(response, 7000)
@@ -52,16 +75,15 @@ export class AuthService {
     )
   }
 
-  private errHandler(err: any): Observable<never>{
-    if (err instanceof HttpErrorResponse){
-      if (err.status === 0){
+  private errHandler(err: any): Observable<never> {
+    if (err instanceof HttpErrorResponse) {
+      if (err.status === 0) {
         this.msgService.message('Server not responding')
         console.error('Server not working')
         return EMPTY
-      }
-      else if(err.status < 500){
+      } else if (err.status < 500) {
         const msg = err.error
-        this.msgService.message(msg,6000)
+        this.msgService.message(msg, 6000)
         console.error(msg)
         return EMPTY
       }
