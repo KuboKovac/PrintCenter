@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginComponent} from "../../auth/login/login.component";
 import {RegisterComponent} from "../../auth/register/register.component";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-nav',
@@ -10,17 +11,29 @@ import {RegisterComponent} from "../../auth/register/register.component";
 })
 export class NavComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  username: string = ''
+  constructor(
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.username = this.authService.username
+    this.authService.usernameChanges().subscribe(
+      username => this.username = username)
   }
 
-  login(){
-    this.dialog.open(LoginComponent)
+  public login(){
+    this.dialog.open(LoginComponent, {
+      panelClass: 'custom-modal-box'
+    })
   }
-
-  register(){
-    this.dialog.open(RegisterComponent)
+  public logout(){
+    this.authService.logout()
   }
-
+  public register(){
+    this.dialog.open(RegisterComponent, {
+      panelClass: 'custom-modal-box'
+    })
+  }
 }
