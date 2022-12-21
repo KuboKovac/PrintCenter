@@ -7,7 +7,7 @@
   </mat-form-field>
   <mat-form-field color="primary">
     <mat-label>Password</mat-label>
-    <input matInput placeholder="Password" type="password" [(ngModel)]="login.password" name="password">
+    <input id="cyPassword" matInput placeholder="Password" type="password" [(ngModel)]="login.password" name="password">
   </mat-form-field>
-  <button id="cyLogin" mat-raised-button color="warn" (click)="onSubmit()">Login</button>
+  <button id="cyLoginForm" mat-raised-button color="warn" (click)="onSubmit()">Login</button>
 </form>
