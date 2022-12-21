@@ -1,6 +1,6 @@
 //test for Wrong username and password
 
-describe('Login.cy.ts', () => {
+describe('wrongLogin.cy.ts', () => {
   it('shows an error message when login fails', () => {
     cy.visit('http://localhost:4200/home');
     cy.get('button[id="cyLogin"]').click()
