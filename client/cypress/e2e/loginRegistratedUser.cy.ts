@@ -11,10 +11,5 @@ describe('wrongLogin.cy.ts', () => {
 
     cy.get('.mat-simple-snackbar').should('contain', 'Logged in successfully')
 
-    
-
-   
-
-
   })
 })
