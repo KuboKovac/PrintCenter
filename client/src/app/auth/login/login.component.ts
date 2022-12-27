@@ -1,17 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../auth.service";
 import {LoginModel} from "../models/loginModel";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   login: LoginModel = new LoginModel('','')
+  loginForm = new FormGroup({
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('', [Validators.required])
+  })
 
   constructor(
     private authService: AuthService,
@@ -19,10 +24,6 @@ export class LoginComponent implements OnInit {
     private router: Router
     ) {
   }
-
-  ngOnInit(): void {
-  }
-
   public onSubmit() {
     this.authService.login(this.login).subscribe({
       next: success => {

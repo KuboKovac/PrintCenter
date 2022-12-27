@@ -1,19 +1,21 @@
 <h2>Register</h2>
 
-<form>
+<form [formGroup]="registerForm">
   <div class="container">
 
     <div class="row">
       <div class="col">
         <mat-form-field color="primary">
           <mat-label>Username</mat-label>
-          <input matInput placeholder="Username" name="username" [(ngModel)]="register.username">
+          <input matInput placeholder="Username" name="username" formControlName="username" [(ngModel)]="register.username">
+          <mat-error *ngIf="registerForm.get('username')">Username length must be at least 5!</mat-error>
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field color="primary">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" type="email" name="email" [(ngModel)]="register.email">
+          <input matInput placeholder="Email" type="email" name="email" formControlName="email" [(ngModel)]="register.email">
+          <mat-error *ngIf="registerForm.get('email')">Enter valid email address</mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -22,13 +24,13 @@
       <div class="col">
         <mat-form-field color="primary">
           <mat-label>First Name</mat-label>
-          <input matInput placeholder="First Name" name="firstName" [(ngModel)]="register.firstName">
+          <input matInput placeholder="First Name" name="firstName" formControlName="fName" [(ngModel)]="register.firstName">
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field color="primary">
           <mat-label>Last Name</mat-label>
-          <input matInput placeholder="Last name" name="lastName" [(ngModel)]="register.lastName">
+          <input matInput placeholder="Last name" name="lastName" formControlName="lName" [(ngModel)]="register.lastName">
         </mat-form-field>
       </div>
     </div>
@@ -37,16 +39,18 @@
       <div class="col">
         <mat-form-field color="primary">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="register.password">
+          <input matInput placeholder="Password" type="password" name="password" formControlName="password" [(ngModel)]="register.password">
+          <mat-error *ngIf="registerForm.get('password')">Password length must be at least 6!</mat-error>
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field color="primary">
           <mat-label>Repeat password</mat-label>
-          <input matInput placeholder="Repeat password" type="password" name="password">
+          <input matInput placeholder="Repeat password" type="password" formControlName="passwordValid" name="password">
+          <mat-error *ngIf="registerForm.errors">Passwords does not match!</mat-error>
         </mat-form-field>
       </div>
     </div>
   </div>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Register</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="registerForm.invalid">Register</button>
 </form>
