@@ -15,7 +15,7 @@ $client-primary: mat.define-palette(mat.$indigo-palette);
 $client-accent: mat.define-palette(mat.$light-blue-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$client-warn: mat.define-palette(mat.$teal-palette);
+$client-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
