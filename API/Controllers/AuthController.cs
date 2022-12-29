@@ -12,12 +12,12 @@ namespace API.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly UserContext _userContext;
+    private readonly PrintUserContext _printUserContext;
     private readonly IConfiguration _configuration;
 
-    public AuthController(UserContext userContext, IConfiguration config)
+    public AuthController(PrintUserContext printUserContext, IConfiguration config)
     {
-        _userContext = userContext;
+        _printUserContext = printUserContext;
         _configuration = config;
     }
 
@@ -26,7 +26,7 @@ public class AuthController : ControllerBase
     {
         HashPassword(request.password, out byte[] passwordHash, out byte[] passwordSalt);
 
-        var registeredUsers = await _userContext.Users.ToListAsync();
+        var registeredUsers = await _printUserContext.Users.ToListAsync();
 
         foreach (var user in registeredUsers)
         {
@@ -40,7 +40,7 @@ public class AuthController : ControllerBase
             }
         }
 
-        _userContext.Users.Add(new User
+        _printUserContext.Users.Add(new User
         {
             username = request.username,
             firstName = request.firstName,
@@ -49,7 +49,7 @@ public class AuthController : ControllerBase
             passwordHash = passwordHash,
             passwordSalt = passwordSalt
         });
-        await _userContext.SaveChangesAsync();
+        await _printUserContext.SaveChangesAsync();
 
         return Ok("User successfully registered!");
     }
@@ -58,7 +58,7 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<User>> Login(LoginDto request)
     {
-        var registeredUsers = await _userContext.Users.ToListAsync();
+        var registeredUsers = await _printUserContext.Users.ToListAsync();
         User user = new User();
 
         foreach (var registeredUser in registeredUsers)

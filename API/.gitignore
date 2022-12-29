@@ -9,9 +9,9 @@
 *.user
 *.userosscache
 *.sln.docstates
-user.db
-user.db-shm
-user.db-wal
+printCenter.db
+printCenter.db-shm
+printCenter.db-wal
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

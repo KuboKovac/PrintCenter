@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(PrintUserContext))]
     [Migration("20221129201018_adminStatusMigration")]
     partial class adminStatusMigration
     {
