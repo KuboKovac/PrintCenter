@@ -9,5 +9,7 @@ public class Product
     public string name { get; set; }
     public string description { get; set; }
     public ProductCategory category { get; set; }
+    public int categoryId { get; set; }
     public ProductBrand brand { get; set; }
+    public int brandId { get; set; }
 }
