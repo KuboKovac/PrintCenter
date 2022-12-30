@@ -82,7 +82,7 @@ $BG-DARK: #464646;
     background-color: $A500;
     color: black;
   }
-  h1,h2{
+  h1,h2,h3,h4,p{
     color: white;
   }
   mat-form-field
@@ -92,7 +92,10 @@ $BG-DARK: #464646;
   mat-label{
     color: #c8c8c8;
   }
-
+  mat-sidenav-container, mat-sidenav, mat-tree, mat-tree-node{
+    background-color: $BG-DARK;
+    color: white;
+  }
   .custom-modal-box {
     mat-dialog-container {
       background-color: $BG-DARK;
