@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForumHomeComponent } from './forum-home.component';
+import { P404Component } from './p404.component';
 
-describe('ForumHomeComponent', () => {
-  let component: ForumHomeComponent;
-  let fixture: ComponentFixture<ForumHomeComponent>;
+describe('P404Component', () => {
+  let component: P404Component;
+  let fixture: ComponentFixture<P404Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForumHomeComponent ]
+      declarations: [ P404Component ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ForumHomeComponent);
+    fixture = TestBed.createComponent(P404Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

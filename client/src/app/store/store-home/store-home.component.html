@@ -1,1 +1,33 @@
-<p>store-home works!</p>
+<div class="container-fluid">
+  <mat-sidenav-container>
+    <mat-sidenav opened mode="side" role="navigation" position="start">
+      <form>
+        <mat-form-field class="search-field">
+          <mat-label><mat-icon fontIcon="search"></mat-icon> Search</mat-label>
+          <input matInput  type="search">
+        </mat-form-field>
+      </form>
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <button mat-icon-button disabled></button>
+          {{node.name}}
+        </mat-tree-node>
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.name}}
+        </mat-tree-node>
+      </mat-tree>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    <mat-sidenav opened mode="side" position="end">
+        <button mat-button routerLink="/store/basket"><mat-icon fontIcon="shopping_basket"></mat-icon></button>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>

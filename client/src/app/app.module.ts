@@ -10,14 +10,13 @@ import {HeaderComponent} from './core/header/header.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthModule} from "./auth/auth.module";
 import {StoreModule} from "./store/store.module";
-import {ForumModule} from "./forum/forum.module";
-import {ModelsModule} from "./models/models.module";
 import {MatDialogModule} from "@angular/material/dialog";
 import {HomeComponent} from './core/home/home.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { AccountDetailComponent } from './core/account-detail/account-detail.component';
+import { P404Component } from './core/p404/p404.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,8 @@ import { AccountDetailComponent } from './account-detail/account-detail.componen
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    AccountDetailComponent
+    AccountDetailComponent,
+    P404Component
   ],
     imports: [
         BrowserModule,
@@ -34,8 +34,6 @@ import { AccountDetailComponent } from './account-detail/account-detail.componen
         NoopAnimationsModule,
         AuthModule,
         StoreModule,
-        ForumModule,
-        ModelsModule,
 
         MatSlideToggleModule,
         MatDialogModule,

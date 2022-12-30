@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //USER DB
-builder.Services.AddDbContext<UserContext>(options =>
+builder.Services.AddDbContext<PrintUserContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
@@ -26,7 +26,7 @@ var app = builder.Build();
 //Initial migration on startup
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<UserContext>();
+    var db = scope.ServiceProvider.GetRequiredService<PrintUserContext>();
     db.Database.Migrate();
 }
 
