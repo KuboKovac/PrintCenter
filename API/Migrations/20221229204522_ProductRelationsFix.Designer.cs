@@ -3,6 +3,7 @@ using System;
 using API;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(PrintUserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20221229204522_ProductRelationsFix")]
+    partial class ProductRelationsFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.2.22472.11");
@@ -45,6 +48,9 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("OrderHistoryid")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("brandId")
                         .HasColumnType("INTEGER");
 
@@ -60,6 +66,8 @@ namespace API.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("id");
+
+                    b.HasIndex("OrderHistoryid");
 
                     b.HasIndex("brandId");
 
@@ -151,21 +159,6 @@ namespace API.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("OrderHistoryProduct", b =>
-                {
-                    b.Property<int>("Productsid")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("orderHistoriesid")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Productsid", "orderHistoriesid");
-
-                    b.HasIndex("orderHistoriesid");
-
-                    b.ToTable("OrderHistoryProduct");
-                });
-
             modelBuilder.Entity("API.Models.OrderHistory", b =>
                 {
                     b.HasOne("API.Models.User", "user")
@@ -179,6 +172,10 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.Product", b =>
                 {
+                    b.HasOne("API.Models.OrderHistory", null)
+                        .WithMany("Products")
+                        .HasForeignKey("OrderHistoryid");
+
                     b.HasOne("API.Models.ProductBrand", "brand")
                         .WithMany("products")
                         .HasForeignKey("brandId")
@@ -196,19 +193,9 @@ namespace API.Migrations
                     b.Navigation("category");
                 });
 
-            modelBuilder.Entity("OrderHistoryProduct", b =>
+            modelBuilder.Entity("API.Models.OrderHistory", b =>
                 {
-                    b.HasOne("API.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("Productsid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Models.OrderHistory", null)
-                        .WithMany()
-                        .HasForeignKey("orderHistoriesid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("API.Models.ProductBrand", b =>
