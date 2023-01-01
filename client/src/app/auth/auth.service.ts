@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {LoginModel} from "./models/loginModel";
 import {environment} from "../../environments/environment";
-import {catchError, EMPTY, map, Observable, Subject} from "rxjs";
-import {MessageService} from "./message.service";
+import {catchError, map, Observable, Subject} from "rxjs";
+import {MessageService} from "../shared/message.service";
 import {TokenModel} from "./models/tokenModel";
 import {RegisterModel} from "./models/registerModel";
 import {Router} from "@angular/router";
+import {errHandler} from "../shared/functions";
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +58,7 @@ export class AuthService {
         this.msgService.message('Logged in successfully')
         return new TokenModel(this.token)
       }),
-      catchError(err => this.errHandler(err))
+      catchError(err => errHandler(err,5000,this.msgService))
     )
   }
   public logout(){
@@ -71,24 +72,8 @@ export class AuthService {
         this.msgService.message(response, 7000)
         return true
       }),
-      catchError(err => this.errHandler(err))
+      catchError(err => errHandler(err,5000,this.msgService))
     )
-  }
-
-  private errHandler(err: any): Observable<never> {
-    if (err instanceof HttpErrorResponse) {
-      if (err.status === 0) {
-        this.msgService.message('Server not responding')
-        console.error('Server not working')
-        return EMPTY
-      } else if (err.status < 500) {
-        const msg = err.error
-        this.msgService.message(msg, 6000)
-        console.error(msg)
-        return EMPTY
-      }
-    }
-    return EMPTY
   }
 
 }

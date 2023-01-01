@@ -10,13 +10,13 @@
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
           <button mat-icon-button disabled></button>
-          {{node.name}}
+          <div class="nav-link" routerLink="store/{{node.name}}">{{node.name}}</div>
         </mat-tree-node>
         <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
           <button mat-icon-button matTreeNodeToggle
                   [attr.aria-label]="'Toggle ' + node.name">
             <mat-icon class="mat-icon-rtl-mirror">
-              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              <div class="nav-link">{{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</div>
             </mat-icon>
           </button>
           {{node.name}}
@@ -27,7 +27,7 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
     <mat-sidenav opened mode="side" position="end">
-        <button mat-button routerLink="/store/basket"><mat-icon fontIcon="shopping_basket"></mat-icon></button>
+        <button class="nav-link" mat-button routerLink="store/basket"><mat-icon fontIcon="shopping_basket"></mat-icon></button>
     </mat-sidenav>
   </mat-sidenav-container>
 </div>

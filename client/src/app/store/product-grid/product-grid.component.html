@@ -1,1 +1,18 @@
-<p>product-grid works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="header-h2">{{gridId}}</h2>
+  </div>
+  <div class="row">
+    <p class="category-description">Description</p>
+  </div>
+  <div class="container-lg">
+    <div class="row">
+
+    </div>
+  </div>
+</div>
+<mat-paginator [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               aria-label="Select page">
+</mat-paginator>
