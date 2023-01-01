@@ -1,18 +1,23 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <h2 class="header-h2">{{gridId}}</h2>
   </div>
   <div class="row">
     <p class="category-description">Description</p>
   </div>
-  <div class="container-lg">
-    <div class="row">
-
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-4 product" *ngFor="let prod of pageSlice">
+        <h3 class="prod-name">{{prod.name}}</h3>
+        <h5 class="prod-desc">{{prod.description}}</h5>
+      </div>
+      <div class="empty-grid" *ngIf="products.length == 0"></div>
     </div>
   </div>
 </div>
-<mat-paginator [length]="100"
-               [pageSize]="10"
-               [pageSizeOptions]="[5, 10, 25, 100]"
-               aria-label="Select page">
+<mat-paginator [length]="products.length"
+               [pageSize]="9"
+               [pageSizeOptions]="[9, 18, 24, 32]"
+               aria-label="Select page"
+               (page)="onPaginatorChange($event)">
 </mat-paginator>

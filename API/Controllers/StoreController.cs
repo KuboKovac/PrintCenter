@@ -26,7 +26,7 @@ public class StoreController : ControllerBase
         return Ok(products);
     }
 
-    [HttpPost("getFromCategory")]
+    [HttpGet("getByCategory/{category}")]
     public async Task<ActionResult<ProductDTO>> ProductsFromCategory(string category)
     {
         List<ProductCategory> categories = await _printUserContext.ProductCategories.ToListAsync();
@@ -40,8 +40,24 @@ public class StoreController : ControllerBase
                 return Ok(products);
             }
         }
-
         return BadRequest("Category not found");
+    }
+
+    [HttpGet("getByBrand/{brand}")]
+    public async Task<ActionResult<ProductDTO>> ProductsFromBrand(string brand)
+    {
+        List<ProductBrand> brands = await _printUserContext.ProductBrands.ToListAsync();
+        foreach (var dbBrand in brands)
+        {
+            if (dbBrand.name == brand)
+            {
+                List<Product> products = await _printUserContext.Products
+                    .Where(product => product.brand.name == brand).ToListAsync();
+                return Ok(products);
+            }
+        }
+
+        return BadRequest("Brand not found");
     }
 
     [HttpPost("getByString")]

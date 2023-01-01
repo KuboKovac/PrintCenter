@@ -10,7 +10,7 @@
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
           <button mat-icon-button disabled></button>
-          <div class="nav-link" routerLink="store/{{node.name}}">{{node.name}}</div>
+          <div class="nav-link" routerLinkActive="active" routerLink="store/{{node.name}}">{{node.name}}</div>
         </mat-tree-node>
         <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
           <button mat-icon-button matTreeNodeToggle

@@ -6,3 +6,24 @@
   margin-top: 5px;
   margin-left: 45px;
 }
+.product{
+  width: 300px;
+  height: 35vh;
+  border-radius: 4px;
+  margin: 15px 15px 15px;
+}
+.prod-name{
+  font-size: 1.5rem;
+  margin: 5px 0 5px;
+}
+.prod-desc{
+  font-size: 1rem;
+  margin: 5px 0 5px;
+}
+.empty-grid{
+  height: 70vh;
+}
+mat-paginator{
+  position: sticky;
+  bottom: 0.05rem;
+}

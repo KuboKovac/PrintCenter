@@ -1,10 +1,11 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {StoreService} from "../store.service";
 import {ICategory} from "../models/ICategory";
 import {IBrand} from "../models/IBrand";
 import {Router} from "@angular/router";
+import {timeout} from "rxjs";
 
 @Component({
   selector: 'app-store-home',
@@ -19,43 +20,26 @@ export class StoreHomeComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
-    private router: Router
   ) {
   }
 
   ngOnInit(): void {
-    //Sorry I know... unfortunately I couldn't find any better solution
-    //TODO - Create normal code
-    new Promise((resolve) => {
-      setTimeout(resolve, 300)
-    }).then(() => {
-      this.getBrands()
-      this.getCategories()
-      new Promise((resolve) => {
-        setTimeout(resolve,450)
-      }).then(() => {
-        this.populateDropdown(this.categories, this.brands)
-        this.dataSource.data = this.dropdownData
-      })
+    this.storeService.getCategories().subscribe(cat => {
+      this.categories = cat
     })
+    this.storeService.getBrands().subscribe(brd => {
+      this.brands = brd
+    })
+    setTimeout(() => {
+      this.populateDropdown(this.categories, this.brands)
+      this.dataSource.data = this.dropdownData
+    }, 500)
   }
   /*
   ___________________________
     DROPDOWN BULLSHIT CODE
   ___________________________
    */
-  private getBrands() {
-    this.storeService.getBrands().subscribe(response => {
-      this.brands = response as IBrand[]
-    })
-  }
-
-  private getCategories() {
-    this.storeService.getCategories().subscribe(response => {
-      this.categories = response as ICategory[]
-    })
-  }
-
   private populateDropdown(categories: ICategory[], brands: IBrand[]) {
     const categoryNames: NavContent[] = categories.map(cat => {
       return {name: cat.name}
