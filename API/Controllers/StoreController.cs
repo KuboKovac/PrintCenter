@@ -26,22 +26,38 @@ public class StoreController : ControllerBase
         return Ok(products);
     }
 
-    [HttpPost("getFromCategory")]
+    [HttpGet("getByCategory/{category}")]
     public async Task<ActionResult<ProductDTO>> ProductsFromCategory(string category)
     {
         List<ProductCategory> categories = await _printUserContext.ProductCategories.ToListAsync();
         foreach (var dbCategory in categories)
         {
-            if (dbCategory.categoryName == category)
+            if (dbCategory.name == category)
             {
                 List<Product> products = await _printUserContext.Products
-                    .Where(product => product.category.categoryName == category).ToListAsync();
+                    .Where(product => product.category.name == category).ToListAsync();
 
                 return Ok(products);
             }
         }
-
         return BadRequest("Category not found");
+    }
+
+    [HttpGet("getByBrand/{brand}")]
+    public async Task<ActionResult<ProductDTO>> ProductsFromBrand(string brand)
+    {
+        List<ProductBrand> brands = await _printUserContext.ProductBrands.ToListAsync();
+        foreach (var dbBrand in brands)
+        {
+            if (dbBrand.name == brand)
+            {
+                List<Product> products = await _printUserContext.Products
+                    .Where(product => product.brand.name == brand).ToListAsync();
+                return Ok(products);
+            }
+        }
+
+        return BadRequest("Brand not found");
     }
 
     [HttpPost("getByString")]
@@ -53,7 +69,7 @@ public class StoreController : ControllerBase
     [HttpPost("addProduct")]
     public async Task<ActionResult<ProductDTO>> AddProduct(ProductDTO product)
     {
-        List<string> categoryNames = await _printUserContext.ProductCategories.Select(category => category.categoryName).ToListAsync();
+        List<string> categoryNames = await _printUserContext.ProductCategories.Select(category => category.name).ToListAsync();
         List<string> brandNames = await _printUserContext.ProductBrands.Select(brand => brand.name).ToListAsync();
         if (categoryNames.Contains(product.category) && brandNames.Contains(product.brand))
         {
@@ -62,7 +78,7 @@ public class StoreController : ControllerBase
                 name = product.name,
                 description = product.description,
                 brand = _printUserContext.ProductBrands.Single(brand => brand.name == product.brand),
-                category = _printUserContext.ProductCategories.Single(category => category.categoryName == product.category)
+                category = _printUserContext.ProductCategories.Single(category => category.name == product.category)
             });
             await _printUserContext.SaveChangesAsync();
             return Ok("Product successfully added");
@@ -94,7 +110,7 @@ public class StoreController : ControllerBase
         List<ProductCategory> categories = await _printUserContext.ProductCategories.ToListAsync();
         foreach (var dbCategory in categories)
         {
-            if (category.name == dbCategory.categoryName)
+            if (category.name == dbCategory.name)
             {
                 return BadRequest("Category already exist");
             }
@@ -102,7 +118,7 @@ public class StoreController : ControllerBase
 
         _printUserContext.ProductCategories.Add(new ProductCategory
         {
-            categoryName = category.name,
+            name = category.name,
             products = new List<Product>()
         });
         await _printUserContext.SaveChangesAsync();
@@ -118,7 +134,7 @@ public class StoreController : ControllerBase
             return BadRequest("Category not found");
         }
 
-        dbCategory.categoryName = category.name;
+        dbCategory.name = category.name;
         await _printUserContext.SaveChangesAsync();
         return Ok("Category successfully changed");
     }

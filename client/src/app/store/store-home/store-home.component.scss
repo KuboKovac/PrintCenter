@@ -1,6 +1,18 @@
 .search-field{
   width: 95%;
 }
+.nav-link{
+  transition: ease-in-out 200ms;
+}
+.nav-link:hover{
+  transform: scale(105%);
+  color: #00d7ce;
+  cursor: pointer;
+}
+.active{
+  color: #00d7ce;
+}
 mat-sidenav-content{
   height: 90vh;
 }
+

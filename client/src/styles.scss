@@ -61,7 +61,9 @@ $BG-DARK: #464646;
 .light-theme {
   transition: ease-in-out 350ms;
   background-color: $BG-LIGHT;
-
+  .product{
+    border: 1px solid $BG-DARK;
+  }
   .fluid-bg {
     background-color: $A500;
   }
@@ -77,7 +79,9 @@ $BG-DARK: #464646;
   transition: ease-in-out 350ms;
   background-color: $BG-DARK;
   color: rgb(255 255 255);
-
+  .product{
+    border: 1px solid $BG-LIGHT;
+  }
   .fluid-bg {
     background-color: $A500;
     color: black;
@@ -92,9 +96,12 @@ $BG-DARK: #464646;
   mat-label{
     color: #c8c8c8;
   }
-  mat-sidenav-container, mat-sidenav, mat-tree, mat-tree-node{
+  mat-sidenav-container, mat-sidenav, mat-tree, mat-tree-node, mat-paginator{
     background-color: $BG-DARK;
     color: white;
+    div, span{
+      color: white;
+    }
   }
   .custom-modal-box {
     mat-dialog-container {

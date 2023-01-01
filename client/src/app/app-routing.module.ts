@@ -6,8 +6,9 @@ import {P404Component} from "./core/p404/p404.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'account-detail', component: AccountDetailComponent},
-  {path: 'store', loadChildren: () => import('src/app/store/store.module').then(m => m.StoreModule)},
+  {path: 'store', loadChildren: () => import('src/app/store/store.module').then(m => m.StoreModule), pathMatch:'full'},
   {path: '**', component: P404Component},
 ];
 

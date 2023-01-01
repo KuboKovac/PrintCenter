@@ -11,6 +11,8 @@ import { GridMenuComponent } from './grid-menu/grid-menu.component';
 import {RouterOutlet} from "@angular/router";
 import {StoreRoutingModule} from "./store-routing.module";
 import { BasketComponent } from './basket/basket.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -22,12 +24,14 @@ import { BasketComponent } from './basket/basket.component';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
 
     MatSidenavModule,
     MatIconModule,
     MatTreeModule,
     MatInputModule,
     MatButtonModule,
+    MatPaginatorModule,
 
     StoreRoutingModule,
     RouterOutlet

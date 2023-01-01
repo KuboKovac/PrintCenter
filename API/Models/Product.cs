@@ -18,6 +18,6 @@ public class Product
     public ProductBrand brand { get; set; }
     [ForeignKey("ProductBrands")]
     public int brandId { get; set; }
-
+    [JsonIgnore]
     public List<OrderHistory> orderHistories { get; set; }
 }

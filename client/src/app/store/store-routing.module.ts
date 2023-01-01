@@ -8,9 +8,11 @@ import {BasketComponent} from "./basket/basket.component";
 const routes = [
   {path: '', component: StoreHomeComponent, children:
     [
-      {path: '', component: ProductGridComponent},
+      {path: 'store', component: ProductGridComponent},
       {path: 'store/menu',component: GridMenuComponent},
-      {path: 'store/basket',component: BasketComponent}
+      {path: 'store/grid',component: ProductGridComponent},
+      {path: 'store/basket',component: BasketComponent},
+      {path: 'store/:id', component: ProductGridComponent},
     ]
   }
 ]

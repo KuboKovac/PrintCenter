@@ -1,16 +1,68 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
+import {StoreService} from "../store.service";
+import {ICategory} from "../models/ICategory";
+import {IBrand} from "../models/IBrand";
+import {Router} from "@angular/router";
+import {timeout} from "rxjs";
 
 @Component({
   selector: 'app-store-home',
   templateUrl: './store-home.component.html',
-  styleUrls: ['./store-home.component.scss']
+  styleUrls: ['./store-home.component.scss'],
 })
-export class StoreHomeComponent {
-  constructor(){
-    this.dataSource.data = NAV_CONTENT_MOCK
+export class StoreHomeComponent implements OnInit {
+
+  categories: ICategory[] = []
+  brands: IBrand[] = []
+  dropdownData: NavContent[] = []
+
+  constructor(
+    private storeService: StoreService,
+  ) {
   }
+
+  ngOnInit(): void {
+    this.storeService.getCategories().subscribe(cat => {
+      this.categories = cat
+    })
+    this.storeService.getBrands().subscribe(brd => {
+      this.brands = brd
+    })
+    setTimeout(() => {
+      this.populateDropdown(this.categories, this.brands)
+      this.dataSource.data = this.dropdownData
+    }, 500)
+  }
+  /*
+  ___________________________
+    DROPDOWN BULLSHIT CODE
+  ___________________________
+   */
+  private populateDropdown(categories: ICategory[], brands: IBrand[]) {
+    const categoryNames: NavContent[] = categories.map(cat => {
+      return {name: cat.name}
+    })
+    const brandNames: NavContent[] = brands.map(brnd => {
+      return {name: brnd.name}
+    })
+    const navData: NavContent[] = [
+      {
+        name: 'ALL PRODUCTS'
+      },
+      {
+        name: 'CATEGORIES',
+        child: categoryNames
+      },
+      {
+        name: 'BRANDS',
+        child: brandNames
+      },
+    ]
+    this.dropdownData = navData
+  }
+
   private _transformer = (node: NavContent, level: number) => {
     return {
       expandable: !!node.child && node.child.length > 0,
@@ -19,7 +71,7 @@ export class StoreHomeComponent {
     }
   }
   treeControl = new FlatTreeControl<ExampleFlatNode>(
-        node => node.level,
+    node => node.level,
     node => node.expandable
   )
 
@@ -29,8 +81,10 @@ export class StoreHomeComponent {
     node => node.expandable,
     node => node.child
   )
-  dataSource = new MatTreeFlatDataSource(this.treeControl,this.treeFlattener)
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener)
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+
+
 }
 
 interface NavContent {
