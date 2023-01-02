@@ -13,6 +13,8 @@ import {StoreRoutingModule} from "./store-routing.module";
 import { BasketComponent } from './basket/basket.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { AdminComponent } from './admin/admin.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     StoreHomeComponent,
     ProductGridComponent,
     GridMenuComponent,
-    BasketComponent
+    BasketComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +35,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatInputModule,
     MatButtonModule,
     MatPaginatorModule,
+    MatSelectModule,
 
     StoreRoutingModule,
     RouterOutlet

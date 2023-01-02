@@ -62,7 +62,8 @@ $BG-DARK: #464646;
   transition: ease-in-out 350ms;
   background-color: $BG-LIGHT;
   .product{
-    border: 1px solid $BG-DARK;
+    border: 1px solid rgba(135, 135, 135, 0.7);
+    background-color: white;
   }
   .fluid-bg {
     background-color: $A500;
@@ -80,7 +81,12 @@ $BG-DARK: #464646;
   background-color: $BG-DARK;
   color: rgb(255 255 255);
   .product{
-    border: 1px solid $BG-LIGHT;
+    border: 1px solid rgba(55, 55, 55, 0.9);
+    background-color: #4c4c4c;
+    .btn-dark{
+      background-color: #626262;
+      color: white;
+    }
   }
   .fluid-bg {
     background-color: $A500;
@@ -96,12 +102,13 @@ $BG-DARK: #464646;
   mat-label{
     color: #c8c8c8;
   }
-  mat-sidenav-container, mat-sidenav, mat-tree, mat-tree-node, mat-paginator{
+  mat-sidenav-container, mat-tree, mat-paginator{
     background-color: $BG-DARK;
     color: white;
-    div, span{
-      color: white;
-    }
+  }
+  mat-sidenav,mat-tree-node{
+    color: white;
+    background-color: #4c4c4c;
   }
   .custom-modal-box {
     mat-dialog-container {
@@ -109,4 +116,3 @@ $BG-DARK: #464646;
     }
   }
 }
-

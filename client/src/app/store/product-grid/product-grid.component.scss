@@ -1,24 +1,42 @@
-.header-h2{
+.header-h1{
+  font-size: 3.2rem;
   margin-top: 10px;
-  margin-left: 25px;
 }
 .category-description{
   margin-top: 5px;
-  margin-left: 45px;
+  margin-left: 35px;
 }
 .product{
   width: 300px;
-  height: 35vh;
   border-radius: 4px;
   margin: 15px 15px 15px;
+  padding: 0;
 }
 .prod-name{
-  font-size: 1.5rem;
-  margin: 5px 0 5px;
+  background-color: #3F51B5FF;
+  border-radius:4px ;
+  color: white;
+  font-size: 1.3rem;
+  margin: 0 0 5px;
+  padding: 5px 0 0;
 }
 .prod-desc{
-  font-size: 1rem;
-  margin: 5px 0 5px;
+  font-size: 0.9rem;
+  margin-left: 15px;
+}
+.product-btn{
+  width: 80px;
+  margin: 5px 10px 10px;
+  transition: ease-in-out 200ms;
+}
+.product-btn:hover{
+  transform: scale(104%);
+}
+.preview-img{
+  margin: 8px 0 5px;
+  height: 33vh;
+  width: 80%;
+  background-color: rgba(255, 127, 80, 0.5);
 }
 .empty-grid{
   height: 70vh;
