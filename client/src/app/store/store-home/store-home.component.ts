@@ -33,7 +33,7 @@ export class StoreHomeComponent implements OnInit {
     setTimeout(() => {
       this.populateDropdown(this.categories, this.brands)
       this.dataSource.data = this.dropdownData
-    }, 500)
+    }, 600)
   }
   /*
   ___________________________
@@ -97,14 +97,3 @@ interface ExampleFlatNode {
   name: string;
   level: number;
 }
-
-const NAV_CONTENT_MOCK: NavContent[] = [
-  {
-    name: "CATEGORIES",
-    child: [{name: "Printers"}, {name: "Filaments"}, {name: "Resins"}, {name: "Parts"}]
-  },
-  {
-    name: "BRANDS",
-    child: [{name: "Creality"}, {name: "Anycubic"}, {name: "Prusa"}, {name: "Ultimaker"}]
-  }
-]

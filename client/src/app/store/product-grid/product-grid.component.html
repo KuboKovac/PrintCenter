@@ -1,23 +1,42 @@
 <div class="container">
   <div class="row">
-    <h2 class="header-h2">{{gridId}}</h2>
+    <h1 class="header-h1">{{gridId}}</h1>
   </div>
   <div class="row">
     <p class="category-description">Description</p>
   </div>
+  <mat-paginator [length]="products.length" *ngIf="products.length != 0"
+                 [pageSize]="12"
+                 [pageSizeOptions]="[12, 24, 36, 48]"
+                 aria-label="Select page"
+                 (page)="onPaginatorChange($event)">
+  </mat-paginator>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-4 product" *ngFor="let prod of pageSlice">
-        <h3 class="prod-name">{{prod.name}}</h3>
-        <h5 class="prod-desc">{{prod.description}}</h5>
+      <div class="col-3 " *ngFor="let prod of pageSlice">
+        <div class="container product">
+          <div class="row prod-name">
+            <h3>{{prod.name}}</h3>
+          </div>
+          <div class="row justify-content-center">
+            <img src="" alt="Product Image" class="preview-img">
+          </div>
+          <div class="row">
+            <p class="prod-desc">{{prod.description}}</p>
+          </div>
+          <div class="row justify-content-center">
+            <button mat-raised-button color="Primary" class="product-btn btn-dark">Details</button>
+            <button mat-raised-button color="accent" class="product-btn">BUY</button>
+          </div>
+        </div>
       </div>
       <div class="empty-grid" *ngIf="products.length == 0"></div>
     </div>
   </div>
+  <mat-paginator [length]="products.length"
+                 [pageSize]="12"
+                 [pageSizeOptions]="[12, 24, 36, 48]"
+                 aria-label="Select page"
+                 (page)="onPaginatorChange($event)">
+  </mat-paginator>
 </div>
-<mat-paginator [length]="products.length"
-               [pageSize]="9"
-               [pageSizeOptions]="[9, 18, 24, 32]"
-               aria-label="Select page"
-               (page)="onPaginatorChange($event)">
-</mat-paginator>
