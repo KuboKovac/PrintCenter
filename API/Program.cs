@@ -1,17 +1,17 @@
 global using API;
 global using Microsoft.EntityFrameworkCore;
+using API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-//USER DB
-builder.Services.AddDbContext<PrintUserContext>(options =>
+// DATABASE
+builder.Services.AddDbContext<PrintCenterDbContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -26,7 +26,7 @@ var app = builder.Build();
 //Initial migration on startup
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<PrintUserContext>();
+    var db = scope.ServiceProvider.GetRequiredService<PrintCenterDbContext>();
     db.Database.Migrate();
 }
 
@@ -36,6 +36,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// UNCOMMENT TO ENABLE EMPTY DATABASE SEEDING
+DbInitializer.DbSeed(app);
 
 app.UseHttpsRedirection();
 

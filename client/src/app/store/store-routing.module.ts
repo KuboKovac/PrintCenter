@@ -7,14 +7,14 @@ import {BasketComponent} from "./basket/basket.component";
 import {AdminComponent} from "./admin/admin.component";
 
 const routes = [
-  {path: '', component: StoreHomeComponent, children:
+  {path: 'store', component: StoreHomeComponent, children:
     [
-      {path: 'store',redirectTo: 'store/ALL PRODUCTS' },
-      {path: 'store/menu',component: GridMenuComponent},
-      {path: 'store/grid',component: ProductGridComponent},
-      {path: 'store/basket',component: BasketComponent},
-      {path: 'store/administration', component: AdminComponent},
-      {path: 'store/:id', component: ProductGridComponent},
+      {path: '', component: GridMenuComponent},
+      {path: 'menu',component: GridMenuComponent},
+      {path: 'grid',component: ProductGridComponent},
+      {path: 'basket',component: BasketComponent},
+      {path: 'administration', component: AdminComponent},
+      {path: ':id', component: ProductGridComponent},
     ]
   }
 ]

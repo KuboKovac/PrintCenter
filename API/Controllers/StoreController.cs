@@ -8,11 +8,11 @@ namespace API.Controllers;
 [ApiController]
 public class StoreController : ControllerBase
 {
-    private readonly PrintUserContext _printUserContext;
+    private readonly PrintCenterDbContext _printCenterDbContext;
 
-    public StoreController(PrintUserContext printUserContext)
+    public StoreController(PrintCenterDbContext printCenterDbContext)
     {
-        _printUserContext = printUserContext;
+        _printCenterDbContext = printCenterDbContext;
     }
 
 
@@ -22,19 +22,19 @@ public class StoreController : ControllerBase
     [HttpGet("getAllProducts")]
     public async Task<ActionResult<ProductDTO>> GetAllProducts()
     {
-        List<Product> products = await _printUserContext.Products.ToListAsync();
+        List<Product> products = await _printCenterDbContext.Products.ToListAsync();
         return Ok(products);
     }
 
     [HttpGet("getByCategory/{category}")]
     public async Task<ActionResult<ProductDTO>> ProductsFromCategory(string category)
     {
-        List<ProductCategory> categories = await _printUserContext.ProductCategories.ToListAsync();
+        List<ProductCategory> categories = await _printCenterDbContext.ProductCategories.ToListAsync();
         foreach (var dbCategory in categories)
         {
             if (dbCategory.name == category)
             {
-                List<Product> products = await _printUserContext.Products
+                List<Product> products = await _printCenterDbContext.Products
                     .Where(product => product.category.name == category).ToListAsync();
 
                 return Ok(products);
@@ -46,12 +46,12 @@ public class StoreController : ControllerBase
     [HttpGet("getByBrand/{brand}")]
     public async Task<ActionResult<ProductDTO>> ProductsFromBrand(string brand)
     {
-        List<ProductBrand> brands = await _printUserContext.ProductBrands.ToListAsync();
+        List<ProductBrand> brands = await _printCenterDbContext.ProductBrands.ToListAsync();
         foreach (var dbBrand in brands)
         {
             if (dbBrand.name == brand)
             {
-                List<Product> products = await _printUserContext.Products
+                List<Product> products = await _printCenterDbContext.Products
                     .Where(product => product.brand.name == brand).ToListAsync();
                 return Ok(products);
             }
@@ -69,18 +69,18 @@ public class StoreController : ControllerBase
     [HttpPost("addProduct")]
     public async Task<ActionResult<ProductDTO>> AddProduct(ProductDTO product)
     {
-        List<string> categoryNames = await _printUserContext.ProductCategories.Select(category => category.name).ToListAsync();
-        List<string> brandNames = await _printUserContext.ProductBrands.Select(brand => brand.name).ToListAsync();
+        List<string> categoryNames = await _printCenterDbContext.ProductCategories.Select(category => category.name).ToListAsync();
+        List<string> brandNames = await _printCenterDbContext.ProductBrands.Select(brand => brand.name).ToListAsync();
         if (categoryNames.Contains(product.category) && brandNames.Contains(product.brand))
         {
-            _printUserContext.Products.Add(new Product
+            _printCenterDbContext.Products.Add(new Product
             {
                 name = product.name,
                 description = product.description,
-                brand = _printUserContext.ProductBrands.Single(brand => brand.name == product.brand),
-                category = _printUserContext.ProductCategories.Single(category => category.name == product.category)
+                brand = _printCenterDbContext.ProductBrands.Single(brand => brand.name == product.brand),
+                category = _printCenterDbContext.ProductCategories.Single(category => category.name == product.category)
             });
-            await _printUserContext.SaveChangesAsync();
+            await _printCenterDbContext.SaveChangesAsync();
             return Ok("Product successfully added");
         }
         
@@ -100,14 +100,14 @@ public class StoreController : ControllerBase
     [HttpGet("getCategories")]
     public async Task<ActionResult<CategoryDTO>> GetCategories()
     {
-        List<ProductCategory> categories = await _printUserContext.ProductCategories.ToListAsync();
+        List<ProductCategory> categories = await _printCenterDbContext.ProductCategories.ToListAsync();
         return Ok(categories);
     }
 
     [HttpPost("addCategory")]
     public async Task<ActionResult<CategoryDTO>> AddCategory(CategoryDTO category)
     {
-        List<ProductCategory> categories = await _printUserContext.ProductCategories.ToListAsync();
+        List<ProductCategory> categories = await _printCenterDbContext.ProductCategories.ToListAsync();
         foreach (var dbCategory in categories)
         {
             if (category.name == dbCategory.name)
@@ -116,26 +116,26 @@ public class StoreController : ControllerBase
             }
         }
 
-        _printUserContext.ProductCategories.Add(new ProductCategory
+        _printCenterDbContext.ProductCategories.Add(new ProductCategory
         {
             name = category.name,
             products = new List<Product>()
         });
-        await _printUserContext.SaveChangesAsync();
+        await _printCenterDbContext.SaveChangesAsync();
         return Ok("Category added successfully");
     }
 
     [HttpPut("modifyCategory")]
     public async Task<ActionResult<CategoryDTO>> UpdateCategory(CategoryDTO category, int id)
     {
-        var dbCategory = await _printUserContext.ProductCategories.FindAsync(id);
+        var dbCategory = await _printCenterDbContext.ProductCategories.FindAsync(id);
         if (dbCategory == null)
         {
             return BadRequest("Category not found");
         }
 
         dbCategory.name = category.name;
-        await _printUserContext.SaveChangesAsync();
+        await _printCenterDbContext.SaveChangesAsync();
         return Ok("Category successfully changed");
     }
 
@@ -146,14 +146,14 @@ public class StoreController : ControllerBase
     [HttpGet("getBrands")]
     public async Task<ActionResult<BrandDTO>> GetBrands()
     {
-        List<ProductBrand> brands = await _printUserContext.ProductBrands.ToListAsync();
+        List<ProductBrand> brands = await _printCenterDbContext.ProductBrands.ToListAsync();
         return Ok(brands);
     }
 
     [HttpPost("addBrand")]
     public async Task<ActionResult<BrandDTO>> AddBrand(BrandDTO brand)
     {
-        List<ProductBrand> brands = await _printUserContext.ProductBrands.ToListAsync();
+        List<ProductBrand> brands = await _printCenterDbContext.ProductBrands.ToListAsync();
         foreach (var dbBrand in brands)
         {
             if (dbBrand.name == brand.name)
@@ -164,13 +164,13 @@ public class StoreController : ControllerBase
 
         if (brand.description != null && brand.name != null)
         {
-            _printUserContext.ProductBrands.Add(new ProductBrand
+            _printCenterDbContext.ProductBrands.Add(new ProductBrand
             {
                 description = brand.description,
                 name = brand.name,
                 products = new List<Product>()
             });
-            await _printUserContext.SaveChangesAsync();
+            await _printCenterDbContext.SaveChangesAsync();
             return Ok("New brand was added");
         }
 
@@ -180,7 +180,7 @@ public class StoreController : ControllerBase
     [HttpPut("modifyBrand")]
     public async Task<ActionResult<BrandDTO>> UpdateBrand(BrandDTO brand, int id)
     {
-        var dbBrand = await _printUserContext.ProductBrands.FindAsync(id);
+        var dbBrand = await _printCenterDbContext.ProductBrands.FindAsync(id);
         if (dbBrand == null)
         {
             return BadRequest("Brand not found");
@@ -188,7 +188,7 @@ public class StoreController : ControllerBase
 
         dbBrand.name = brand.name;
         dbBrand.description = brand.description;
-        await _printUserContext.SaveChangesAsync();
+        await _printCenterDbContext.SaveChangesAsync();
         return Ok("Brand successfully updated");
     }
 }

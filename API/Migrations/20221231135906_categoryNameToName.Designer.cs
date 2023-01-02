@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(PrintUserContext))]
+    [DbContext(typeof(PrintCenterDbContext))]
     [Migration("20221231135906_categoryNameToName")]
     partial class categoryNameToName
     {

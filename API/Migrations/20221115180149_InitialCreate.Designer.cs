@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(PrintUserContext))]
+    [DbContext(typeof(PrintCenterDbContext))]
     [Migration("20221115180149_InitialCreate")]
     partial class InitialCreate
     {
