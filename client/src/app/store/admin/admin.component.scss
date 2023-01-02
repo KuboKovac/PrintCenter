@@ -1,0 +1,38 @@
+h1{
+  font-size: 1.5rem;
+  margin: 5px 0 5px;
+  text-align: center;
+}
+mat-form-field{
+  width: 200px;
+  height: 50px;
+}
+button{
+  width: 250px;
+  margin: 0 0 25px;
+  transition: ease-in-out 200ms;
+}
+button:hover{
+  transform: scale(104%);
+}
+.header-panel{
+  font-size: 2.5rem;
+  text-align: start;
+  margin: 25px 80px 25px;
+}
+.container{
+  margin: 15px auto 0;
+}
+.container-wrapper{
+  width: 50%;
+}
+.product{
+  border-radius: 4px;
+}
+.description-input{
+  width: 73%;
+  min-height: 100px;
+}
+.input-field-wider{
+  width: 281px;
+}

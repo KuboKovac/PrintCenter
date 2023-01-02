@@ -39,7 +39,7 @@ export class ProductGridComponent implements OnInit {
           this.getProducts()
         }
         console.log(this.products)
-        setTimeout(() => this.pageSlice = this.products.slice(0,9),500)
+        setTimeout(() => this.pageSlice = this.products.slice(0,12),500)
       }, 500)
     })
   }
