@@ -3,6 +3,13 @@ name: Cypress tests
 on: [push]
 
 jobs:
+  dotnet-run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run .NET server
+      run: dotnet run
+
   cypress-run:
     runs-on: ubuntu-latest
     steps:
