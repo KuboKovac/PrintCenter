@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {LoginModel} from "./models/loginModel";
-import {environment} from "../../environments/environment";
 import {catchError, map, Observable, Subject} from "rxjs";
 import {MessageService} from "../shared/message.service";
 import {TokenModel} from "./models/tokenModel";
 import {RegisterModel} from "./models/registerModel";
 import {Router} from "@angular/router";
 import {errHandler} from "../shared/functions";
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
