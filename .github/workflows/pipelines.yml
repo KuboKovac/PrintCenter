@@ -1,0 +1,28 @@
+name: Cypress tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+              cd: API
+              dotnet-version: '3.1.x'
+      #Install NPM dependencies, cache them correctly
+      #and run all cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2.9.1
+        with:
+              working-directory: ./client
+              build: npm run build
+              start: npm start
+              config-file: cypress.config.ts
+              record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -44,7 +44,7 @@ export class StoreService {
     return this.http.get(this.url + 'Store/getByBrand/' + brandName).pipe(
       map(response => {
         return response as IProduct[]
-        }),catchError(err => errHandler(err,5000, this.msgService))
+      }),catchError(err => errHandler(err,5000, this.msgService))
     )
   }
   public getCategories(): Observable<ICategory[]>{

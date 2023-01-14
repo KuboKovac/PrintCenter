@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {LoginModel} from "./models/loginModel";
 import {environment} from "../../environments/environment";
 import {catchError, map, Observable, Subject} from "rxjs";
@@ -23,7 +23,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private msgService: MessageService,
-    private router: Router,
+    private router: Router
   ) {
   }
 
