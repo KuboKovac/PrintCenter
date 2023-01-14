@@ -8,6 +8,7 @@ import {TokenModel} from "./models/tokenModel";
 import {RegisterModel} from "./models/registerModel";
 import {Router} from "@angular/router";
 import {errHandler} from "../shared/functions";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,13 @@ export class AuthService {
 
   private url = environment.baseUrl
   usernameSubject = new Subject<string>()
+  private jwtParser = new JwtHelperService();
+  public isAdmin: boolean = false
+
   constructor(
     private http: HttpClient,
     private msgService: MessageService,
-    private router: Router
+    private router: Router,
   ) {
   }
 
@@ -55,6 +59,14 @@ export class AuthService {
       map(response => {
         this.username = response.username
         this.token = response.token
+
+        let parsedToken = this.jwtParser.decodeToken(this.token)
+        if (parsedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == 'Admin'){
+          this.isAdmin = true
+        }
+        else
+          this.isAdmin = false
+
         this.msgService.message('Logged in successfully')
         return new TokenModel(this.token)
       }),

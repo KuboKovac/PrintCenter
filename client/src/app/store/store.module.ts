@@ -15,6 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { AdminComponent } from './admin/admin.component';
 import {MatSelectModule} from "@angular/material/select";
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { OrderStepperComponent } from './order-stepper/order-stepper.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {MatSelectModule} from "@angular/material/select";
     ProductGridComponent,
     GridMenuComponent,
     BasketComponent,
-    AdminComponent
+    AdminComponent,
+    ProductDetailComponent,
+    OrderStepperComponent
   ],
   imports: [
     CommonModule,

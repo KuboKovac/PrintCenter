@@ -1,6 +1,8 @@
 using API.DTOs.Store;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace API.Controllers;
 
@@ -26,6 +28,19 @@ public class StoreController : ControllerBase
         return Ok(products);
     }
 
+    [HttpGet("getProductById/{id}")]
+    public async Task<ActionResult<ProductDTO>> GetProductById(string id)
+    {
+        int intId = IntegerType.FromString(id);
+        Product? product = await _printCenterDbContext.Products.FindAsync(intId);
+        if (product == null)
+        {
+            return BadRequest("Product not Found");
+        }
+
+        return Ok(product);
+    }
+
     [HttpGet("getByCategory/{category}")]
     public async Task<ActionResult<ProductDTO>> ProductsFromCategory(string category)
     {
@@ -40,6 +55,7 @@ public class StoreController : ControllerBase
                 return Ok(products);
             }
         }
+
         return BadRequest("Category not found");
     }
 
@@ -66,10 +82,11 @@ public class StoreController : ControllerBase
         return Ok("TODO");
     }
 
-    [HttpPost("addProduct")]
+    [HttpPost("addProduct"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<ProductDTO>> AddProduct(ProductDTO product)
     {
-        List<string> categoryNames = await _printCenterDbContext.ProductCategories.Select(category => category.name).ToListAsync();
+        List<string> categoryNames =
+            await _printCenterDbContext.ProductCategories.Select(category => category.name).ToListAsync();
         List<string> brandNames = await _printCenterDbContext.ProductBrands.Select(brand => brand.name).ToListAsync();
         if (categoryNames.Contains(product.category) && brandNames.Contains(product.brand))
         {
@@ -83,11 +100,11 @@ public class StoreController : ControllerBase
             await _printCenterDbContext.SaveChangesAsync();
             return Ok("Product successfully added");
         }
-        
+
         return BadRequest("Category or brand does not exist");
     }
 
-    [HttpPut("modifyProduct")]
+    [HttpPut("modifyProduct"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<ProductDTO>> ModifyProduct()
     {
         return Ok("TODO");
@@ -104,7 +121,7 @@ public class StoreController : ControllerBase
         return Ok(categories);
     }
 
-    [HttpPost("addCategory")]
+    [HttpPost("addCategory"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<CategoryDTO>> AddCategory(CategoryDTO category)
     {
         List<ProductCategory> categories = await _printCenterDbContext.ProductCategories.ToListAsync();
@@ -125,7 +142,7 @@ public class StoreController : ControllerBase
         return Ok("Category added successfully");
     }
 
-    [HttpPut("modifyCategory")]
+    [HttpPut("modifyCategory"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<CategoryDTO>> UpdateCategory(CategoryDTO category, int id)
     {
         var dbCategory = await _printCenterDbContext.ProductCategories.FindAsync(id);
@@ -150,7 +167,7 @@ public class StoreController : ControllerBase
         return Ok(brands);
     }
 
-    [HttpPost("addBrand")]
+    [HttpPost("addBrand"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<BrandDTO>> AddBrand(BrandDTO brand)
     {
         List<ProductBrand> brands = await _printCenterDbContext.ProductBrands.ToListAsync();
@@ -177,7 +194,7 @@ public class StoreController : ControllerBase
         return BadRequest("Values cannot be null");
     }
 
-    [HttpPut("modifyBrand")]
+    [HttpPut("modifyBrand"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<BrandDTO>> UpdateBrand(BrandDTO brand, int id)
     {
         var dbBrand = await _printCenterDbContext.ProductBrands.FindAsync(id);

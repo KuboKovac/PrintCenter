@@ -1,1 +1,30 @@
-<p>basket works!</p>
+<h2 class="header-h2">Basket Overview:</h2>
+
+<div class="container product-container">
+  <div class="row product align-items-center" *ngFor="let i of basket">
+    <div class="col-1 img">
+      <p>image</p>
+    </div>
+    <div class="col-6 name">
+      <p>Product</p>
+    </div>
+    <div class="col-2 amount">
+      <p>Amount: {{i}}</p>
+    </div>
+    <div class="col-1 increase">
+      <button mat-button class="btn-amnt"><mat-icon>add</mat-icon></button>
+    </div>
+    <div class="col-1 decrease">
+      <button mat-button class="btn-amnt"><mat-icon>remove</mat-icon></button>
+    </div>
+    <div class="col-1 delete">
+      <button mat-button class="btn-delete"><mat-icon>delete</mat-icon></button>
+    </div>
+  </div>
+</div>
+<div class="container basket-control">
+  <div class="row justify-content-between">
+    <button class="btn-control" mat-raised-button color="accent" routerLink="/store"><mat-icon>arrow_back</mat-icon> Back to Store</button>
+    <button class="btn-control" mat-raised-button color="accent" routerLink="/store/basket/order">Continue to Order <mat-icon>arrow_forward</mat-icon></button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.header-h1{
+  margin: 15px 0 15px;
+  font-size: 3.5rem;
+}
+.description{
+  font-size: 1.2rem;
+}
+.main-img{
+  width: 30vw;
+  height: 50vh;
+}
+.img-select{
+  width: 100px;
+  height: 70px;
+  margin: 5px;
+  background-color: coral;
+}
+.product{
+  border-radius: 5px;
+  margin: 15px auto 15px;
+  padding: 15px;
+}
+.btn-control{
+  width:5vw;
+  transition: ease-in-out 200ms;
+}
+.btn-control:hover{
+  transform:scale(105%);
+}
+.bottom-row{
+  margin-top: 40px;
+}
+

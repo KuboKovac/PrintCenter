@@ -68,6 +68,7 @@ public class AuthController : ControllerBase
                 user.username = request.username;
                 user.passwordHash = registeredUser.passwordHash;
                 user.passwordSalt = registeredUser.passwordSalt;
+                user.isAdmin = registeredUser.isAdmin;
                 if (VerifyHash(request.password, user.passwordHash, user.passwordSalt))
                 {
                     var token = GenerateToken(user);
@@ -101,10 +102,17 @@ public class AuthController : ControllerBase
 
     private string GenerateToken(User user)
     {
-        List<Claim> claims = new List<Claim>
+        List<Claim> claims = new List<Claim>();
+        claims.Add(new Claim(ClaimTypes.Name, user.username));
+        switch (user.isAdmin)
         {
-            new Claim(ClaimTypes.Name, user.username)
-        };
+            case true:
+                claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                break;
+            case false:
+                claims.Add(new Claim(ClaimTypes.Role,"User"));
+                break;
+        }
 
         var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
             _configuration.GetSection("AppSettings:Token").Value));

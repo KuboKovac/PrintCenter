@@ -8,21 +8,31 @@
 }
 .product{
   width: 300px;
+  min-height: 395px;
   border-radius: 4px;
   margin: 15px 15px 15px;
   padding: 0;
 }
 .prod-name{
   background-color: #3F51B5FF;
+  height: 3rem;
   border-radius:4px ;
   color: white;
   font-size: 1.3rem;
   margin: 0 0 5px;
   padding: 5px 0 0;
 }
+.prod-name-text{
+  white-space: nowrap;
+
+}
 .prod-desc{
+  text-align: center;
   font-size: 0.9rem;
   margin-left: 15px;
+  height: 63px;
+  width: 90%;
+  overflow: hidden;
 }
 .product-btn{
   width: 80px;

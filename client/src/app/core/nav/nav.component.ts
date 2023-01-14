@@ -14,7 +14,7 @@ export class NavComponent implements OnInit {
   username: string = ''
   constructor(
     private dialog: MatDialog,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {

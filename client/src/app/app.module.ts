@@ -17,6 +17,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { AccountDetailComponent } from './core/account-detail/account-detail.component';
 import { P404Component } from './core/p404/p404.component';
+import { AboutUsComponent } from './core/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { P404Component } from './core/p404/p404.component';
     HeaderComponent,
     HomeComponent,
     AccountDetailComponent,
-    P404Component
+    P404Component,
+    AboutUsComponent
   ],
     imports: [
         BrowserModule,

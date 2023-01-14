@@ -1,0 +1,45 @@
+.header-h2{
+  margin: 15px 45px  15px;
+}
+.img{
+  background-color: coral;
+  text-align: center;
+}
+.product-container{
+  height: 65vh;
+  overflow: scroll;
+}
+.product{
+  margin: 5px 0 5px;
+  border-radius: 3px;
+}
+.amount{
+  text-align: center;
+}
+.btn-amnt{
+  transition: ease-in-out 200ms;
+}
+.btn-amnt:hover{
+  transform: scale(105%);
+  color: #00fff7;
+}
+.btn-delete{
+  transition: ease-in-out 200ms;
+}
+.btn-delete:hover{
+  transform: scale(105%);
+  color: red;
+}
+.btn-control{
+  transition: ease-in-out 200ms;
+  width: min-content;
+}
+.btn-control:hover{
+  transform: scale(105%);
+}
+.basket-control{
+  margin: 15px auto 0;
+}
+p{
+  margin: 0;
+}

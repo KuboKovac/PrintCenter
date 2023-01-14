@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
-import {StoreService} from "../store.service";
+import {StoreService} from "../services/store.service";
 import {ICategory} from "../models/ICategory";
 import {IBrand} from "../models/IBrand";
-import {Router} from "@angular/router";
-import {timeout} from "rxjs";
 
 @Component({
   selector: 'app-store-home',

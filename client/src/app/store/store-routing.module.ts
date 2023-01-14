@@ -5,6 +5,9 @@ import {ProductGridComponent} from "./product-grid/product-grid.component";
 import {GridMenuComponent} from "./grid-menu/grid-menu.component";
 import {BasketComponent} from "./basket/basket.component";
 import {AdminComponent} from "./admin/admin.component";
+import {ProductDetailComponent} from "./product-detail/product-detail.component";
+import {OrderStepperComponent} from "./order-stepper/order-stepper.component";
+import {AdminGuard} from "../auth/admin.guard";
 
 const routes = [
   {path: 'store', component: StoreHomeComponent, children:
@@ -13,8 +16,9 @@ const routes = [
       {path: 'menu',component: GridMenuComponent},
       {path: 'grid',component: ProductGridComponent},
       {path: 'basket',component: BasketComponent},
-      {path: 'administration', component: AdminComponent},
+      {path: 'basket/order', component: OrderStepperComponent},
       {path: ':id', component: ProductGridComponent},
+      {path: ':id/:detailId', component: ProductDetailComponent},
     ]
   }
 ]
