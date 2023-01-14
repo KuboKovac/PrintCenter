@@ -4,7 +4,7 @@
   <span class="spacer"></span>
   <div *ngIf="username else elseBlock">
     <button routerLink="account-detail" mat-icon-button><mat-icon>account_circle</mat-icon></button>
-    <button routerLink="/store/administration" mat-raised-button color="accent">ADMINISTRATION</button>
+    <button routerLink="/store/administration" mat-raised-button color="accent" *ngIf="authService.isAdmin">ADMINISTRATION</button>
     <button mat-raised-button color="accent" (click)="logout()">LOGOUT</button>
   </div>
 

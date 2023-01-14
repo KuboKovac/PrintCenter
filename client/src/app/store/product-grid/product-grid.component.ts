@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {StoreService} from "../store.service";
+import {StoreService} from "../services/store.service";
 import {IProduct} from "../models/IProduct";
 import {PageEvent} from "@angular/material/paginator";
 
@@ -38,7 +38,6 @@ export class ProductGridComponent implements OnInit {
         else {
           this.getProducts()
         }
-        console.log(this.products)
         setTimeout(() => this.pageSlice = this.products.slice(0,12),500)
       }, 500)
     })
