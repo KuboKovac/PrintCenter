@@ -18,6 +18,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { AccountDetailComponent } from './core/account-detail/account-detail.component';
 import { P404Component } from './core/p404/p404.component';
 import { AboutUsComponent } from './core/about-us/about-us.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AboutUsComponent } from './core/about-us/about-us.component';
     HomeComponent,
     AccountDetailComponent,
     P404Component,
-    AboutUsComponent
+    AboutUsComponent,
   ],
     imports: [
         BrowserModule,
@@ -46,7 +47,7 @@ import { AboutUsComponent } from './core/about-us/about-us.component';
 
         AppRoutingModule,
     ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: '/client'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
