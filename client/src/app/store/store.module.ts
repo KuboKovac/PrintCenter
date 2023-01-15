@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import {MatSelectModule} from "@angular/material/select";
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { OrderStepperComponent } from './order-stepper/order-stepper.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { OrderStepperComponent } from './order-stepper/order-stepper.component';
     MatButtonModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatStepperModule,
 
     StoreRoutingModule,
     RouterOutlet
