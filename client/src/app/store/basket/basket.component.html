@@ -2,8 +2,8 @@
 
 <div class="container product-container" *ngIf="basket.products.length != 0 else elseBlock">
   <div class="row product align-items-center" *ngFor="let prod of basket.products">
-    <div class="col-1 img">
-      <img src="{{prod.product.images[0].path}}">
+    <div class="col-1">
+      <img class="img" src="{{prod.product.images[0].path}}" alt="prod-img">
     </div>
     <div class="col-6 name">
       <p routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="basket-prod-name">{{prod.product.name}}</p>
