@@ -202,6 +202,66 @@ public class DbInitializer
                     new Images
                     {
                         path = "https://c-3d.niceshops.com/upload/image/product/large/default/23675_.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/4180_eaf96647.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/4304_fa7a5d66.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/4190_66fa828e.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/4181_f92e2523.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/19173_efd1c78c.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/19174_edc47445.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/19175_bd533369.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/19175_bd533369.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/17160_77d3f775.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/17161_0346c258.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/23312_.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/14260_e406d4b8.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/14261_f0f42663.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/14262_6795e2bd.512x512.jpg"
+                    },
+                    new Images
+                    {
+                        path = "https://c-3d.niceshops.com/upload/image/product/large/default/14271_bb19c128.512x512.jpg"
                     }
                 );
             }
@@ -262,6 +322,21 @@ public class DbInitializer
                         name = "PolyMaker",
                         description =
                             "Well known manufacturer of filaments and resins, which offer wide variety of materials from standard ones as PLA up to industrial high resistant materials as nylon."
+                    },
+                    new ProductBrand()
+                    {
+                        name = "Liqcreate",
+                        description = ""
+                    },
+                    new ProductBrand
+                    {
+                        name = "Phrozen",
+                        description = ""
+                    },
+                    new ProductBrand()
+                    {
+                        name = "Anycubic",
+                        description = ""
                     }
                 );
                 context.SaveChanges();
@@ -422,7 +497,7 @@ public class DbInitializer
                             context.Images.Find(32),
                         }
                     },
-                    new Product()
+                    new Product
                     {
                         name = "CR touch kit",
                         amount = 4,
@@ -436,6 +511,70 @@ public class DbInitializer
                             context.Images.Find(18),
                             context.Images.Find(19),
                             context.Images.Find(20),
+                        }
+                    },
+                    new Product
+                    {
+                        name = "Liqcreate Strong X",
+                        amount = 2,
+                        brandId = 3,
+                        categoryId = 4,
+                        price = 194.99,
+                        description = "Engineering Resin for Open Source SLA and DLP 3D Printer in Grey",
+                        images = new List<Images>
+                        {
+                            context.Images.Find(37),
+                            context.Images.Find(38),
+                            context.Images.Find(39),
+                            context.Images.Find(40),
+                        }
+                    },
+                    new Product
+                    {
+                        name = "Phrozen Aqua Resin 8K",
+                        amount = 4,
+                        brandId = 4,
+                        categoryId = 4,
+                        price = 69.99,
+                        description = "For extremely filigree 3D models with 8K resolution",
+                        images = new List<Images>
+                        {
+                            context.Images.Find(41),
+                            context.Images.Find(42),
+                            context.Images.Find(43),
+                            context.Images.Find(44),
+                        }
+                    },
+                    new Product
+                    {
+                        name = "Creality dualZ",
+                        amount = 4,
+                        brandId = 1,
+                        categoryId = 5,
+                        price = 34.99,
+                        description = "Upgrade for the Ender 3 V2. Add second z-rod for better print quality and faster print speed.",
+                        images = new List<Images>
+                        {
+                            context.Images.Find(45),
+                            context.Images.Find(46),
+                            context.Images.Find(47),
+                        }
+                    },
+                    new Product
+                    {
+                        name = "Anycubic Wash&Cure 2.0",
+                        amount = 6,
+                        brandId = 5,
+                        categoryId = 2,
+                        price = 119.99,
+                        description = "Easy post-treatment of the resin model with Wash & Cure. A resin 3D printer creates unattainable details compared to FDM printers." +
+                                      " However, it is well known that post-processing the finished models can be tedious." + 
+                        "This product offers a 2 in 1 solution for everyone who works with an SLA, DLP or LCD 3D printer. It is a cleaning machine and UV hardener at the same time!",
+                        images = new List<Images>
+                        {
+                            context.Images.Find(48),
+                            context.Images.Find(49),
+                            context.Images.Find(50),
                         }
                     }
                 );
