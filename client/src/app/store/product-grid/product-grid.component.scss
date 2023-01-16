@@ -34,6 +34,9 @@
   width: 90%;
   overflow: hidden;
 }
+.prod-price{
+  text-align: center;
+}
 .product-btn{
   width: 80px;
   margin: 5px 10px 10px;
@@ -44,9 +47,8 @@
 }
 .preview-img{
   margin: 8px 0 5px;
-  height: 33vh;
   width: 80%;
-  background-color: rgba(255, 127, 80, 0.5);
+  cursor: pointer;
 }
 .empty-grid{
   height: 70vh;

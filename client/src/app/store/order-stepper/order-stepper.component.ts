@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-order-stepper',
   templateUrl: './order-stepper.component.html',
@@ -7,9 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderStepperComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
   }
-
 }

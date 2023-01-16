@@ -5,7 +5,7 @@
   <div *ngIf="username else elseBlock">
     <button routerLink="account-detail" mat-icon-button><mat-icon>account_circle</mat-icon></button>
     <button routerLink="administration" mat-raised-button color="accent" *ngIf="authService.isAdmin">ADMINISTRATION</button>
-    <button id="cyLogout" mat-raised-button color="accent" (click)="logout()">LOGOUT</button>
+    <button mat-raised-button color="accent" (click)="logout()">LOGOUT</button>
   </div>
 
   <ng-template #elseBlock>

@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {StoreService} from "../services/store.service";
 import {IProduct} from "../models/IProduct";
 import {PageEvent} from "@angular/material/paginator";
+import {BasketService} from "../services/basket.service";
+import {MessageService} from "../../shared/message.service";
 
 @Component({
   selector: 'app-product-grid',
@@ -20,7 +22,9 @@ export class ProductGridComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private basketService: BasketService,
+    private messageService: MessageService
   ) {
   }
 
@@ -41,6 +45,10 @@ export class ProductGridComponent implements OnInit {
         setTimeout(() => this.pageSlice = this.products.slice(0,12),500)
       }, 500)
     })
+  }
+  public addToBasket(product: IProduct){
+    this.basketService.addToBasket(product)
+    this.messageService.message("Product added to basket :)", 2000)
   }
 
   public onPaginatorChange(event: PageEvent){

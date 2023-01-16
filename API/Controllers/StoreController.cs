@@ -24,7 +24,7 @@ public class StoreController : ControllerBase
     [HttpGet("getAllProducts")]
     public async Task<ActionResult<ProductDTO>> GetAllProducts()
     {
-        List<Product> products = await _printCenterDbContext.Products.ToListAsync();
+        List<Product> products = await _printCenterDbContext.Products.Include(c => c.images).ToListAsync();
         return Ok(products);
     }
 
@@ -32,7 +32,8 @@ public class StoreController : ControllerBase
     public async Task<ActionResult<ProductDTO>> GetProductById(string id)
     {
         int intId = IntegerType.FromString(id);
-        Product? product = await _printCenterDbContext.Products.FindAsync(intId);
+        List<Product> products = await _printCenterDbContext.Products.Include(c => c.images).ToListAsync();
+        var product = products.Find(prod => prod.id == intId);
         if (product == null)
         {
             return BadRequest("Product not Found");
@@ -50,7 +51,7 @@ public class StoreController : ControllerBase
             if (dbCategory.name == category)
             {
                 List<Product> products = await _printCenterDbContext.Products
-                    .Where(product => product.category.name == category).ToListAsync();
+                    .Where(product => product.category.name == category).Include(c => c.images).ToListAsync();
 
                 return Ok(products);
             }
@@ -68,7 +69,7 @@ public class StoreController : ControllerBase
             if (dbBrand.name == brand)
             {
                 List<Product> products = await _printCenterDbContext.Products
-                    .Where(product => product.brand.name == brand).ToListAsync();
+                    .Where(product => product.brand.name == brand).Include(c => c.images).ToListAsync();
                 return Ok(products);
             }
         }

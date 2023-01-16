@@ -1,19 +1,28 @@
 .header-h1{
-  margin: 15px 0 15px;
-  font-size: 3.5rem;
+  margin: 15px 0 25px;
+  font-size: 5rem;
 }
 .description{
   font-size: 1.2rem;
 }
+.price{
+  margin: 45px 0 0;
+  font-size: 3.2rem;
+}
 .main-img{
-  width: 30vw;
-  height: 50vh;
+  width: 32vw;
+  margin: 25px 15px 25px;
+  border-radius: 3px;
 }
 .img-select{
-  width: 100px;
-  height: 70px;
-  margin: 5px;
-  background-color: coral;
+  width: 3.5vw;
+  margin: 10px 0 10px;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+  border-radius: 3px;
+}
+.img-select:hover{
+  transform: scale(105%);
 }
 .product{
   border-radius: 5px;
@@ -29,5 +38,8 @@
 }
 .bottom-row{
   margin-top: 40px;
+}
+.img-wrapper{
+  width: min-content;
 }
 

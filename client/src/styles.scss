@@ -74,6 +74,15 @@ $BG-DARK: #464646;
       background-color: $BG-LIGHT;
     }
   }
+  .main-img-wrapper{
+    border-radius: 5px;
+    margin: 0 15px 0;
+  }
+  .select-wrapper{
+    background-color: #eaeaea;
+    border-radius: 5px;
+    margin: 0 12px 0;
+  }
 }
 
 .dark-theme {
@@ -114,5 +123,15 @@ $BG-DARK: #464646;
     mat-dialog-container {
       background-color: $BG-DARK;
     }
+  }
+  .main-img-wrapper{
+    background-color: #6d6d6d;
+    border-radius: 5px;
+    margin: 0 15px 0;
+  }
+  .select-wrapper{
+    background-color: #6d6d6d;
+    border-radius: 5px;
+    margin: 0 12px 0;
   }
 }
