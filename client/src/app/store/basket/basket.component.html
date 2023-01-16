@@ -3,10 +3,10 @@
 <div class="container product-container" *ngIf="basket.products.length != 0 else elseBlock">
   <div class="row product align-items-center" *ngFor="let prod of basket.products">
     <div class="col-1 img">
-      <p>image</p>
+      <img src="{{prod.product.images[0].path}}">
     </div>
     <div class="col-6 name">
-      <p>{{prod.product.name}}</p>
+      <p routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="basket-prod-name">{{prod.product.name}}</p>
     </div>
     <div class="col-2 amount">
       <p>Amount: {{prod.amount}}</p>

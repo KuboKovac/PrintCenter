@@ -1,10 +1,7 @@
 .header-h2{
   margin: 15px 45px  15px;
 }
-.img{
-  background-color: coral;
-  text-align: center;
-}
+
 .product-container{
   height: 65vh;
   overflow: scroll;
@@ -12,6 +9,13 @@
 .product{
   margin: 5px 0 5px;
   border-radius: 3px;
+}
+.basket-prod-name{
+  transition: ease-in-out 200ms;
+}
+.basket-prod-name:hover{
+  cursor: pointer;
+  color: #00fff7;
 }
 .amount{
   text-align: center;
@@ -46,6 +50,9 @@
 .basket-empty{
   text-align: center;
   margin: 30vh 0 30vh;
+}
+img{
+  width: 45px;
 }
 p{
   margin: 0;

@@ -78,4 +78,6 @@ app.MapControllers();
 
 app.UseCors("CorsPolicy");
 
+app.UseStaticFiles();
+
 app.Run();

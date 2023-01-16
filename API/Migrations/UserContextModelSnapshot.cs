@@ -23,16 +23,11 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Productid")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("path")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("id");
-
-                    b.HasIndex("Productid");
 
                     b.ToTable("Images");
                 });
@@ -181,6 +176,21 @@ namespace API.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ImagesProduct", b =>
+                {
+                    b.Property<int>("imagesid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("productsid")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("imagesid", "productsid");
+
+                    b.HasIndex("productsid");
+
+                    b.ToTable("ImagesProduct");
+                });
+
             modelBuilder.Entity("OrderHistoryProduct", b =>
                 {
                     b.Property<int>("Productsid")
@@ -194,13 +204,6 @@ namespace API.Migrations
                     b.HasIndex("orderHistoriesid");
 
                     b.ToTable("OrderHistoryProduct");
-                });
-
-            modelBuilder.Entity("API.Models.Images", b =>
-                {
-                    b.HasOne("API.Models.Product", null)
-                        .WithMany("images")
-                        .HasForeignKey("Productid");
                 });
 
             modelBuilder.Entity("API.Models.OrderHistory", b =>
@@ -233,6 +236,21 @@ namespace API.Migrations
                     b.Navigation("category");
                 });
 
+            modelBuilder.Entity("ImagesProduct", b =>
+                {
+                    b.HasOne("API.Models.Images", null)
+                        .WithMany()
+                        .HasForeignKey("imagesid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("productsid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("OrderHistoryProduct", b =>
                 {
                     b.HasOne("API.Models.Product", null)
@@ -246,11 +264,6 @@ namespace API.Migrations
                         .HasForeignKey("orderHistoriesid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("API.Models.Product", b =>
-                {
-                    b.Navigation("images");
                 });
 
             modelBuilder.Entity("API.Models.ProductBrand", b =>

@@ -11,4 +11,5 @@ public class PrintCenterDbContext : DbContext
     public DbSet<Product> Products => Set<Product>();
     public DbSet<ProductBrand> ProductBrands => Set<ProductBrand>();
     public DbSet<ProductCategory> ProductCategories => Set<ProductCategory>();
+    public DbSet<Images> Images => Set<Images>();
 } 

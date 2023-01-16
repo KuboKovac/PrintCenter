@@ -6,4 +6,9 @@ export interface IProduct{
   description: string,
   categoryId: number,
   brandId: number
+  images: IImage[]
+}
+export interface IImage{
+  id: number,
+  path: string
 }
