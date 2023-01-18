@@ -1,0 +1,193 @@
+<mat-stepper linear="true" class="stepper">
+  <mat-step label="Shipping details">
+    <mat-card class="mat-card">
+      <mat-card-header>
+        <h2>Fill your shipping details please.</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <div [formGroup]="shippingForm" class="shipping-form">
+          <mat-form-field color="primary">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" name="fName" formControlName="fname" [(ngModel)]="orderData.fName">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" name="lName" formControlName="lname" [(ngModel)]="orderData.lName">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" name="email" formControlName="email" [(ngModel)]="orderData.email">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Phone number</mat-label>
+            <input matInput placeholder="Phone number" name="phoneNumber" formControlName="phoneNumber" [(ngModel)]="orderData.phoneNumber">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Address" name="address" formControlName="address" [(ngModel)]="orderData.address">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Apartment No.</mat-label>
+            <input matInput placeholder="Apartment No." name="apartmentNo" formControlName="apartmentNo" [(ngModel)]="orderData.apartmentNo">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Postal code</mat-label>
+            <input matInput placeholder="Postal code" name="postCode" formControlName="postalCode" [(ngModel)]="orderData.postalCode">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Province</mat-label>
+            <input matInput placeholder="Province" name="province" formControlName="province" [(ngModel)]="orderData.province">
+          </mat-form-field>
+
+          <mat-form-field color="primary">
+            <mat-label>Country</mat-label>
+            <input matInput placeholder="Country" name="country" formControlName="country" [(ngModel)]="orderData.country">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button class="btn-control" mat-raised-button color="accent" routerLink="/store/basket">
+          <mat-icon>arrow_back</mat-icon>
+          Back
+        </button>
+        <button class="btn-control" mat-raised-button color="accent" matStepperNext [disabled]="shippingForm.invalid"
+        >Continue
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </mat-step>
+  <mat-step label="Payment info">
+    <mat-card>
+      <mat-card-header>
+        <h2>Select payment and delivery method</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card class="shipment-option" (click)="selectShipment(0)"
+                  [ngClass]="{shipmentChecked: selectedShipment == 0}">
+          <img alt="DHL-logo" src="assets/images/DHL_LOGO-e1515506782308-3743878840.png" class="shipment-image">
+          <h5>DHL</h5>
+          <h5>+3.50 €</h5>
+        </mat-card>
+        <mat-card class="shipment-option" (click)="selectShipment(1)"
+                  [ngClass]="{shipmentChecked: selectedShipment == 1}">
+          <img alt="UPS-logo" src="assets/images/ups-282281-936144989.png" class="shipment-image">
+          <h5>UPS</h5>
+          <h5>+4.50 €</h5>
+        </mat-card>
+        <mat-card class="shipment-option" (click)="selectShipment(2)"
+                  [ngClass]="{shipmentChecked: selectedShipment == 2}">
+          <img alt="warehouse-logo" src="assets/images/Warehouse-storage-stocks-factories-buildings-512-2702082227.png"
+               class="shipment-image">
+          <h5>Pickup at shop</h5>
+          <h5>+0.0 €</h5>
+        </mat-card>
+        <mat-card class="payment">
+          <mat-checkbox (change)="onCheckboxChange()" [checked]="accTransfer" [disabled]="selectedShipment == 2">Account
+            transfer +0.0 €
+          </mat-checkbox>
+          <mat-checkbox (change)="onCheckboxChange()" [checked]="payAfterDelivery" [disabled]="selectedShipment == 2">
+            Pay after delivery +1.50 €
+          </mat-checkbox>
+        </mat-card>
+      </mat-card-content>
+      <mat-card-footer>
+        <button class="btn-control" mat-raised-button color="accent" matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+          Back
+        </button>
+        <button class="btn-control" mat-raised-button color="accent" matStepperNext
+        >Continue
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </mat-step>
+  <mat-step label="Order confirmation">
+    <mat-card>
+      <mat-card-header>
+        <h2>Order Recapitulation:</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="product-container">
+          <div class="row product align-items-center" *ngFor="let prod of basket.products">
+            <div class="col-2">
+              <img class="img" src="{{prod.product.images[0].path}}" alt="prod-img">
+            </div>
+            <div class="col-6 name">
+              <p routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="basket-prod-name">{{prod.product.name}}</p>
+            </div>
+            <div class="col-2 amount">
+              <p>Amount: {{prod.amount}}</p>
+            </div>
+            <div class="col-2 amount">
+              <p>Price: {{prod.price.toFixed(2)}}€</p>
+            </div>
+          </div>
+        </div>
+        <mat-card class="order-info">
+          <div class="info-row">
+            <h5>First Name: </h5>
+            <p>{{orderData.fName}}</p>
+          </div>
+          <div class="info-row">
+            <h5>Last Name: </h5>
+            <p>{{orderData.lName}}</p>
+          </div>
+          <div class="info-row">
+            <h5>Email: </h5>
+            <p>{{orderData.email}}</p>
+          </div>
+          <div class="info-row">
+            <h5>Phone number: </h5>
+            <p>{{orderData.phoneNumber}}</p>
+          </div>
+          <div class="info-row">
+            <h5>Address: </h5>
+            <p>{{orderData.address}}</p>
+          </div>
+          <div class="info-row">
+            <h5>Apartment No. : </h5>
+            <p>{{orderData.apartmentNo}}</p>
+          </div>
+          <div class="info-row">
+            <h5>Postal code: </h5>
+            <p>{{orderData.postalCode}}</p>
+          </div>
+          <div *ngIf="orderData.province != ''" class="info-row">
+            <h5>Province: </h5>
+            <p>{{orderData.province}}</p>
+          </div>
+          <div class="info-row">
+            <h5>Country: </h5>
+            <p>{{orderData.country}}</p>
+          </div>
+        </mat-card>
+        <div class="container">
+          <div class="row">
+            <h5>Total price:</h5>
+            <p>{{basket.totalPrice.toFixed(2)}} € + {{additionalPrice}} € shipping</p>
+            <h5>{{(basket.totalPrice + additionalPrice).toFixed(2)}} €</h5>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button class="btn-control" mat-raised-button color="accent" matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+          Back
+        </button>
+        <button class="btn-control" mat-raised-button color="accent" (click)="sendOrder()"
+        >Confirm Order
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </mat-step>
+</mat-stepper>

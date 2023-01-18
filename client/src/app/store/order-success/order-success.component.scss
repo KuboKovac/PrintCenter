@@ -1,0 +1,33 @@
+mat-card{
+  width: 45vw;
+  margin: 45px auto 0;
+}
+mat-card-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+mat-card-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+mat-card-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+h1{
+  text-align: center;
+}
+.btn-control{
+  margin: 25px;
+  transition: ease-in-out 200ms;
+  width: min-content;
+}
+.btn-control:hover{
+  transform: scale(105%);
+}
+.success-img{
+  width: 18vw;
+}

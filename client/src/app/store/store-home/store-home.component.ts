@@ -31,7 +31,7 @@ export class StoreHomeComponent implements OnInit {
     setTimeout(() => {
       this.populateDropdown(this.categories, this.brands)
       this.dataSource.data = this.dropdownData
-    }, 600)
+    }, 800)
   }
   /*
   ___________________________

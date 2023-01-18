@@ -1,7 +1,119 @@
-.mat-stepper-horizontal {
-  margin-top: 8px;
+h2{
+  text-align: center;
+}
+.stepper{
+  width: 65%;
+  margin: 15px auto 0;
+}
+.mat-card {
+  margin: 45px auto 0;
+  width: 25vw;
+}
+.shipment-option{
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: ease-in-out 100ms;
+  cursor: pointer;
+}
+.shipmentChecked{
+  border: 2px solid #00fff7;
+  border-radius: 3px;
+}
+.shipment-option:hover{
+  transform:scale(105%);
+}
+.shipment-image{
+  width: 3vw;
+}
+.payment{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+mat-card-content{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.shipping-form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+mat-card-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn-control{
+  width: 7vw;
+  margin: 5px auto 15px;
+}
+mat-form-field{
+  padding: 10px;
+}
+.order-info{
+  margin: 15px 0 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.info-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+h5{
+  margin: 0 5px 0;
+}
+/*
+BASKET
+ */
+.header-h2{
+  margin: 15px 45px  15px;
 }
 
-.mat-mdc-form-field {
-  margin-top: 16px;
+.product-container{
+  height: 45vh;
+  overflow: scroll;
 }
+.product{
+  margin: 5px 0 5px;
+  border-radius: 3px;
+}
+.basket-prod-name{
+  transition: ease-in-out 200ms;
+}
+.basket-prod-name:hover{
+  cursor: pointer;
+  color: #00fff7;
+}
+.amount{
+  text-align: center;
+}
+.btn-control{
+  transition: ease-in-out 200ms;
+  width: min-content;
+}
+.btn-control:hover{
+  transform: scale(105%);
+}
+.price{
+  margin: 0 15px 25px;
+}
+.img{
+  width: 3vw;
+  margin: 1px 0 1px;
+}
+p{
+  margin: 0;
+  font-size: 1.2rem;
+}
+
