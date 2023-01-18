@@ -8,6 +8,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {ProductDetailComponent} from "./product-detail/product-detail.component";
 import {OrderStepperComponent} from "./order-stepper/order-stepper.component";
 import {AdminGuard} from "../auth/admin.guard";
+import {OrderSuccessComponent} from "./order-success/order-success.component";
 
 const routes = [
   {path: 'store', component: StoreHomeComponent, children:
@@ -17,6 +18,7 @@ const routes = [
       {path: 'grid',component: ProductGridComponent},
       {path: 'basket',component: BasketComponent},
       {path: 'basket/order', component: OrderStepperComponent},
+      {path: 'basket/order-success', component: OrderSuccessComponent},
       {path: ':id', component: ProductGridComponent},
       {path: ':id/:detailId', component: ProductDetailComponent},
     ]

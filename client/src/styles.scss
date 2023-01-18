@@ -101,7 +101,7 @@ $BG-DARK: #464646;
     background-color: $A500;
     color: black;
   }
-  h1,h2,h3,h4,p{
+  h1,h2,h3,h4,h5,p,.mat-checkbox-label{
     color: white;
   }
   mat-form-field
@@ -118,6 +118,16 @@ $BG-DARK: #464646;
   mat-sidenav,mat-tree-node{
     color: white;
     background-color: #4c4c4c;
+  }
+  mat-card{
+    background-color: #4c4c4c;
+  }
+  mat-stepper{
+    background-color: $BG-DARK;
+    color: white;
+  }
+  mat-step,.mat-step-text-label{
+    color: white;
   }
   .custom-modal-box {
     mat-dialog-container {

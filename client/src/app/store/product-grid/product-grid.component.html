@@ -23,7 +23,7 @@
           </div>
           <div class="row">
             <p class="prod-desc">{{prod.description}}</p>
-            <h3 class="prod-price">{{prod.price}} €</h3>
+            <h3 class="prod-price">{{prod.price.toFixed(2)}} €</h3>
           </div>
           <div class="row justify-content-center">
             <button mat-raised-button color="Primary" class="product-btn btn-dark" routerLink="{{prod.id}}">Details</button>

@@ -42,8 +42,8 @@ export class ProductGridComponent implements OnInit {
         else {
           this.getProducts()
         }
-        setTimeout(() => this.pageSlice = this.products.slice(0,12),500)
-      }, 500)
+        setTimeout(() => this.pageSlice = this.products.slice(0,12),600)
+      }, 600)
     })
   }
   public addToBasket(product: IProduct){

@@ -8,7 +8,7 @@ export class Basket{
     this.products.forEach(prod => {
       totalPrice += prod.price
     })
-    return totalPrice.toFixed(2)
+    return totalPrice
   }
 }
 
