@@ -8,5 +8,6 @@ describe('wrongLogin.cy.ts', () => {
     cy.get('input[id="cyPassword"]').type('FakePassword')
     cy.get('button[id="cyLoginForm"]').click()
     cy.get('.mat-simple-snackbar').should('contain', 'Username or password is wrong')
+    
   })
 })

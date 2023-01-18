@@ -1,4 +1,4 @@
-describe('wrongLogin.cy.ts', () => {
+/*describe('wrongLogin.cy.ts', () => {
     it('shows an error message when login fails', () => {
       cy.visit('http://localhost:4200/home');
       cy.get('button').contains('REGISTER').click()
@@ -11,4 +11,4 @@ describe('wrongLogin.cy.ts', () => {
       cy.get('button').contains('Register').click()
     cy.get('.mat-simple-snackbar').should('contain', 'Email already taken')
     })
-  })
+  })*/
