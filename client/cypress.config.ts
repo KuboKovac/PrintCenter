@@ -10,6 +10,7 @@ export default defineConfig({
   },
 
   e2e: {
+
     setupNodeEvents(on, config) {},
     projectId: 'eyeds4',
   },
