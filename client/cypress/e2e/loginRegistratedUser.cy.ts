@@ -1,4 +1,4 @@
-describe('wrongLogin.cy.ts', () => {
+describe('loginRegistratedUser.cy.ty', () => {
   it('After registration login registrated user', () => {
     cy.visit('http://localhost:4200/home');
     cy.get('button[id="cyLogin"]').click()
