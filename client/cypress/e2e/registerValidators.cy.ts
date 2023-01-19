@@ -1,7 +1,5 @@
-import { contains } from "cypress/types/jquery";
-
-describe('wrongLogin.cy.ts', () => {
-    it('shows an error message when login fails', () => {
+describe('registerValidators.cy.ts', () => {
+    it('should show validators in bad filling register', () => {
       cy.visit('http://localhost:4200/home');
       cy.get('button').contains('REGISTER').click()
       //lenght 5 letters in username test

@@ -6,13 +6,6 @@ describe('wrongLogin.cy.ts', () => {
     cy.get('input[id="cyPassword"]').type('jakopako')
     cy.get('button').contains('Login').click()
     cy.get('.mat-simple-snackbar').should('contain', 'Logged in successfully')
-    cy.get('button[id="cyLogout"]').click()
-
-
-    
-
-   
-
-
+    cy.get('button').contains('LOGOUT').click()
   })
 })
