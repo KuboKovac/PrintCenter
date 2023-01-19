@@ -1,1 +1,43 @@
-<p>product-grid works!</p>
+<div class="container">
+  <div class="row">
+    <h1 class="header-h1">{{gridId}}</h1>
+  </div>
+  <div class="row">
+    <p class="category-description"></p>
+  </div>
+  <mat-paginator [length]="products.length" *ngIf="products.length != 0"
+                 [pageSize]="12"
+                 [pageSizeOptions]="[12, 24, 36, 48]"
+                 aria-label="Select page"
+                 (page)="onPaginatorChange($event)">
+  </mat-paginator>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-3 " *ngFor="let prod of pageSlice">
+        <div class="container product">
+          <div class="row prod-name">
+            <h3 class="prod-name-text">{{prod.name}}</h3>
+          </div>
+          <div class="row justify-content-center">
+            <img src="{{prod.images[0].path}}" alt="Product Image" class="preview-img" routerLink="{{prod.id}}">
+          </div>
+          <div class="row">
+            <p class="prod-desc">{{prod.description}}</p>
+            <h3 class="prod-price">{{prod.price.toFixed(2)}} €</h3>
+          </div>
+          <div class="row justify-content-center">
+            <button mat-raised-button color="Primary" class="product-btn btn-dark" routerLink="{{prod.id}}">Details</button>
+            <button mat-raised-button color="accent" class="product-btn" (click)="addToBasket(prod)">BUY</button>
+          </div>
+        </div>
+      </div>
+      <div class="empty-grid" *ngIf="products.length == 0"></div>
+    </div>
+  </div>
+  <mat-paginator [length]="products.length" *ngIf="products.length > 4"
+                 [pageSize]="12"
+                 [pageSizeOptions]="[12, 24, 36, 48]"
+                 aria-label="Select page"
+                 (page)="onPaginatorChange($event)">
+  </mat-paginator>
+</div>

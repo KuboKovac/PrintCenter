@@ -1,1 +1,56 @@
-<p>basket works!</p>
+<h2 class="header-h2">Basket Overview:</h2>
+
+<div class="container product-container" *ngIf="basket.products.length != 0 else elseBlock">
+  <div class="row product align-items-center" *ngFor="let prod of basket.products">
+    <div class="col-1">
+      <img class="img" src="{{prod.product.images[0].path}}" alt="prod-img">
+    </div>
+    <div class="col-6 name">
+      <p routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="basket-prod-name">{{prod.product.name}}</p>
+    </div>
+    <div class="col-1 amount">
+      <p>Amount: {{prod.amount}}</p>
+    </div>
+    <div class="col-1 amount">
+      <p>Price: {{prod.price.toFixed(2)}}€</p>
+    </div>
+    <div class="col-1 increase">
+      <button mat-button class="btn-amnt" (click)="increaseAmount(prod.product,prod.amount)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="col-1 decrease">
+      <button mat-button class="btn-amnt" (click)="decreaseAmount(prod.product,prod.amount)">
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+    <div class="col-1 delete">
+      <button mat-button class="btn-delete" (click)="removeFromBasket(prod.product)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="container">
+    <div class="row">
+      <h1 class="basket-empty">Your basket seems empty :(</h1>
+    </div>
+  </div>
+</ng-template>
+
+<div class="container basket-control">
+  <div class="row" *ngIf="basket.products.length != 0">
+    <h2 class="price">Total price: {{basket.totalPrice.toFixed(2)}}€</h2>
+  </div>
+  <div class="row justify-content-between">
+    <button class="btn-control" mat-raised-button color="accent" routerLink="/store">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Store
+    </button>
+    <button class="btn-control" mat-raised-button color="accent" routerLink="/store/basket/order" [disabled]="basket.products.length == 0"
+    >Continue to Order
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+.header-h2{
+  margin: 15px 45px  15px;
+}
+
+.product-container{
+  height: 65vh;
+  overflow: scroll;
+}
+.product{
+  margin: 5px 0 5px;
+  border-radius: 3px;
+}
+.basket-prod-name{
+  transition: ease-in-out 200ms;
+}
+.basket-prod-name:hover{
+  cursor: pointer;
+  color: #00fff7;
+}
+.amount{
+  text-align: center;
+}
+.btn-amnt{
+  transition: ease-in-out 200ms;
+}
+.btn-amnt:hover{
+  transform: scale(105%);
+  color: #00fff7;
+}
+.btn-delete{
+  transition: ease-in-out 200ms;
+}
+.btn-delete:hover{
+  transform: scale(105%);
+  color: red;
+}
+.btn-control{
+  transition: ease-in-out 200ms;
+  width: min-content;
+}
+.btn-control:hover{
+  transform: scale(105%);
+}
+.basket-control{
+  margin: 15px auto 0;
+}
+.price{
+  margin: 0 15px 25px;
+}
+.basket-empty{
+  text-align: center;
+  margin: 30vh 0 30vh;
+}
+.img{
+  width: 3vw;
+  margin: 1px 0 1px;
+}
+p{
+  margin: 0;
+}

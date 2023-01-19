@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Models;
 
@@ -9,5 +10,6 @@ public class ProductBrand
 
     public string name { get; set; }
     public string description { get; set; }
+    [JsonIgnore]
     public List<Product> products { get; set; }
 }

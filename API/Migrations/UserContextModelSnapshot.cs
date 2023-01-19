@@ -9,13 +9,28 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(PrintUserContext))]
+    [DbContext(typeof(PrintCenterDbContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.2.22472.11");
+
+            modelBuilder.Entity("API.Models.Images", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("path")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Images");
+                });
 
             modelBuilder.Entity("API.Models.OrderHistory", b =>
                 {
@@ -45,6 +60,9 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("amount")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("brandId")
                         .HasColumnType("INTEGER");
 
@@ -58,6 +76,9 @@ namespace API.Migrations
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("price")
+                        .HasColumnType("REAL");
 
                     b.HasKey("id");
 
@@ -93,7 +114,11 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("categoryName")
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -151,6 +176,21 @@ namespace API.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ImagesProduct", b =>
+                {
+                    b.Property<int>("imagesid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("productsid")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("imagesid", "productsid");
+
+                    b.HasIndex("productsid");
+
+                    b.ToTable("ImagesProduct");
+                });
+
             modelBuilder.Entity("OrderHistoryProduct", b =>
                 {
                     b.Property<int>("Productsid")
@@ -194,6 +234,21 @@ namespace API.Migrations
                     b.Navigation("brand");
 
                     b.Navigation("category");
+                });
+
+            modelBuilder.Entity("ImagesProduct", b =>
+                {
+                    b.HasOne("API.Models.Images", null)
+                        .WithMany()
+                        .HasForeignKey("imagesid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("productsid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OrderHistoryProduct", b =>

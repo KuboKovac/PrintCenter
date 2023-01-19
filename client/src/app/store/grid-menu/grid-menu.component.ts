@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StoreService} from "../services/store.service";
 
 @Component({
   selector: 'app-grid-menu',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridMenuComponent implements OnInit {
 
-  constructor() { }
+  public categories: string[] = []
 
-  ngOnInit(): void {
+  constructor(
+    private storeService: StoreService
+  ) {
   }
 
+  ngOnInit(): void {
+    this.storeService.getCategories().subscribe(response => {
+      this.categories = response.map(cat => cat.name)
+    })
+  }
 }

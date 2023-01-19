@@ -61,7 +61,10 @@ $BG-DARK: #464646;
 .light-theme {
   transition: ease-in-out 350ms;
   background-color: $BG-LIGHT;
-
+  .product{
+    border: 1px solid rgba(135, 135, 135, 0.7);
+    background-color: white;
+  }
   .fluid-bg {
     background-color: $A500;
   }
@@ -71,18 +74,34 @@ $BG-DARK: #464646;
       background-color: $BG-LIGHT;
     }
   }
+  .main-img-wrapper{
+    border-radius: 5px;
+    margin: 0 15px 0;
+  }
+  .select-wrapper{
+    background-color: #eaeaea;
+    border-radius: 5px;
+    margin: 0 12px 0;
+  }
 }
 
 .dark-theme {
   transition: ease-in-out 350ms;
   background-color: $BG-DARK;
   color: rgb(255 255 255);
-
+  .product{
+    border: 1px solid rgba(55, 55, 55, 0.9);
+    background-color: #4c4c4c;
+    .btn-dark{
+      background-color: #626262;
+      color: white;
+    }
+  }
   .fluid-bg {
     background-color: $A500;
     color: black;
   }
-  h1,h2,h3,h4,p{
+  h1,h2,h3,h4,h5,p,.mat-checkbox-label{
     color: white;
   }
   mat-form-field
@@ -92,8 +111,22 @@ $BG-DARK: #464646;
   mat-label{
     color: #c8c8c8;
   }
-  mat-sidenav-container, mat-sidenav, mat-tree, mat-tree-node{
+  mat-sidenav-container, mat-tree, mat-paginator{
     background-color: $BG-DARK;
+    color: white;
+  }
+  mat-sidenav,mat-tree-node{
+    color: white;
+    background-color: #4c4c4c;
+  }
+  mat-card{
+    background-color: #4c4c4c;
+  }
+  mat-stepper{
+    background-color: $BG-DARK;
+    color: white;
+  }
+  mat-step,.mat-step-text-label{
     color: white;
   }
   .custom-modal-box {
@@ -101,5 +134,14 @@ $BG-DARK: #464646;
       background-color: $BG-DARK;
     }
   }
+  .main-img-wrapper{
+    background-color: #6d6d6d;
+    border-radius: 5px;
+    margin: 0 15px 0;
+  }
+  .select-wrapper{
+    background-color: #6d6d6d;
+    border-radius: 5px;
+    margin: 0 12px 0;
+  }
 }
-
