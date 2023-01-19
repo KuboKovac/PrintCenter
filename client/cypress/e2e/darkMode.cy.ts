@@ -4,7 +4,5 @@ describe('darkMode.cy.ts', () => {
       cy.get('mat-slide-toggle').click();
       cy.get('mat-slide-toggle').click();
       cy.get('h1').should('have.css', 'color', 'rgb(255, 255, 255)');
-      
-
     })
   })
