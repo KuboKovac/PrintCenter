@@ -1,4 +1,5 @@
-using System.Net.Mail;
+using API.DTOs.Orders;
+using API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -15,19 +16,15 @@ public class OrdersController : ControllerBase
         this._context = context;
     }
 
-
-
-
-
-
-    private void sendMail()
+    [HttpPost("createOrder")]
+    public async Task<ActionResult> createOrder(OrderDTO order)
     {
-        MailAddress to = new MailAddress("kubja33@gmail.com");
-        MailAddress from = new MailAddress("kubja33@gmail.com");
-        MailMessage msg = new MailMessage(from, to);
-        msg.Subject = "Fuck off Alabama!";
-        msg.Body = "chuju 123345";
-
-
+        
+        await this._context.Orderhistory.AddAsync(new OrderHistory
+        {
+         
+        });
+        return Ok("");
     }
+
 }

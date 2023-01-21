@@ -18,8 +18,8 @@ export class RegisterComponent {
   registerForm = new FormGroup({
     username: new FormControl('', [Validators.required,Validators.minLength(5)]),
     email: new FormControl('', [Validators.required ,Validators.email]),
-    fName: new FormControl('',[Validators.required]),
-    lName: new FormControl('',[Validators.required]),
+    fName: new FormControl('',[Validators.required, Validators.minLength(2)]),
+    lName: new FormControl('',[Validators.required, Validators.minLength(2)]),
     password: new FormControl('',[Validators.required,Validators.minLength(6)]),
     passwordValid: new FormControl('',[Validators.required,Validators.minLength(6)])
   },

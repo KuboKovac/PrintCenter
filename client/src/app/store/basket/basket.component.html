@@ -1,30 +1,26 @@
 <h2 class="header-h2">Basket Overview:</h2>
 
 <div class="container product-container" *ngIf="basket.products.length != 0 else elseBlock">
-  <div class="row product align-items-center" *ngFor="let prod of basket.products">
-    <div class="col-1">
-      <img class="img" src="{{prod.product.images[0].path}}" alt="prod-img">
+  <div class="basket-item product" *ngFor="let prod of basket.products">
+    <div class="flex-item">
+      <img routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="img" src="{{prod.product.images[0].path}}" alt="prod-img">
     </div>
-    <div class="col-6 name">
+    <div class="flex-item basket-prod-name">
       <p routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="basket-prod-name">{{prod.product.name}}</p>
     </div>
-    <div class="col-1 amount">
+    <div class="flex-item">
       <p>Amount: {{prod.amount}}</p>
     </div>
-    <div class="col-1 amount">
+    <div class="flex-item">
       <p>Price: {{prod.price.toFixed(2)}}€</p>
     </div>
-    <div class="col-1 increase">
+    <div class="item-control flex-item">
       <button mat-button class="btn-amnt" (click)="increaseAmount(prod.product,prod.amount)">
         <mat-icon>add</mat-icon>
       </button>
-    </div>
-    <div class="col-1 decrease">
       <button mat-button class="btn-amnt" (click)="decreaseAmount(prod.product,prod.amount)">
         <mat-icon>remove</mat-icon>
       </button>
-    </div>
-    <div class="col-1 delete">
       <button mat-button class="btn-delete" (click)="removeFromBasket(prod.product)">
         <mat-icon>delete</mat-icon>
       </button>

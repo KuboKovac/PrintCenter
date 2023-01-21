@@ -1,3 +1,5 @@
+import {Basket} from "./Basket";
+
 export class Order{
   constructor(
     public fName: string = '',
@@ -10,5 +12,12 @@ export class Order{
     public province?: string,
     public country: string = '',
     ) {
+  }
+}
+export class FinalOrder{
+  constructor(
+    public shippingData: Order,
+    public basket: Basket
+  ) {
   }
 }

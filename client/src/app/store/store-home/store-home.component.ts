@@ -4,6 +4,7 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {StoreService} from "../services/store.service";
 import {ICategory} from "../models/ICategory";
 import {IBrand} from "../models/IBrand";
+import {MediaMatcher} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-store-home',
@@ -16,9 +17,13 @@ export class StoreHomeComponent implements OnInit {
   brands: IBrand[] = []
   dropdownData: NavContent[] = []
 
+  mobileQuery: MediaQueryList;
+
   constructor(
     private storeService: StoreService,
+    private media: MediaMatcher
   ) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)')
   }
 
   ngOnInit(): void {

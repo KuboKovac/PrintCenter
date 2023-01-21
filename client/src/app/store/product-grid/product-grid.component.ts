@@ -48,7 +48,7 @@ export class ProductGridComponent implements OnInit {
   }
   public addToBasket(product: IProduct){
     this.basketService.addToBasket(product)
-    this.messageService.message("Product added to basket :)", 2000)
+    this.messageService.message("Product added to basket", 2000)
   }
 
   public onPaginatorChange(event: PageEvent){

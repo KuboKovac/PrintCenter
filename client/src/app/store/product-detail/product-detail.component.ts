@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
 
   public addToBasket(product: IProduct){
       this.basketService.addToBasket(product)
-    this.msgService.message("Product added into basket :)",2000)
+    this.msgService.message("Product added into basket",2000)
   }
 
   public changeImage(image: IImage){

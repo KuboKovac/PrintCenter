@@ -8,6 +8,7 @@ p{
   margin: 0;
 }
 .p-link{
+  text-align: center;
   transition: ease-in-out 200ms;
   cursor: pointer;
 }
@@ -22,6 +23,7 @@ h1{
 }
 img{
   width: 13%;
+  min-width: 50px;
   height: 13%;
  }
 .footer-content{
@@ -38,4 +40,16 @@ img{
 row{
   margin-top: 5px;
   margin-bottom: 5px;
+}
+@media only screen and (max-width: 768px) {
+  h1{
+    font-size: 1rem;
+
+  }
+  p{
+    font-size: 0.8rem;
+  }
+  .hide{
+    display: none;
+  }
 }

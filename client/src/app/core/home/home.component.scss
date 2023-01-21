@@ -7,6 +7,7 @@
   padding: 0;
   filter: blur(2px);
   -webkit-filter: blur(2px);
+  object-fit: cover;
 }
 .overlay{
   position: absolute;
@@ -14,9 +15,20 @@
   margin: 20% 10% 0;
 }
 h1{
-  font-size: 100px;
+  font-size: 5.8rem;
   color: white;
 }
 h2{
   color: #006fff;
+}
+@media only screen and (max-width: 768px) {
+  h1{
+    font-size: 2.8rem;
+  }
+  h2{
+    font-size: 1.6rem;
+  }
+  .bg-img{
+    height: 70vh;
+  }
 }
