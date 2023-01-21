@@ -1,5 +1,5 @@
-<mat-stepper linear="true" class="stepper">
-  <mat-step label="Shipping details">
+<mat-stepper linear="false" class="stepper">
+  <mat-step label="Details" [stepControl]="shippingForm">
     <mat-card class="mat-card">
       <mat-card-header>
         <h2>Fill your shipping details please.</h2>
@@ -23,32 +23,38 @@
 
           <mat-form-field color="primary">
             <mat-label>Phone number</mat-label>
-            <input matInput placeholder="Phone number" name="phoneNumber" formControlName="phoneNumber" [(ngModel)]="orderData.phoneNumber">
+            <input matInput placeholder="Phone number" name="phoneNumber" formControlName="phoneNumber"
+                   [(ngModel)]="orderData.phoneNumber">
           </mat-form-field>
 
           <mat-form-field color="primary">
             <mat-label>Address</mat-label>
-            <input matInput placeholder="Address" name="address" formControlName="address" [(ngModel)]="orderData.address">
+            <input matInput placeholder="Address" name="address" formControlName="address"
+                   [(ngModel)]="orderData.address">
           </mat-form-field>
 
           <mat-form-field color="primary">
             <mat-label>Apartment No.</mat-label>
-            <input matInput placeholder="Apartment No." name="apartmentNo" formControlName="apartmentNo" [(ngModel)]="orderData.apartmentNo">
+            <input matInput placeholder="Apartment No." name="apartmentNo" formControlName="apartmentNo"
+                   [(ngModel)]="orderData.apartmentNo">
           </mat-form-field>
 
           <mat-form-field color="primary">
             <mat-label>Postal code</mat-label>
-            <input matInput placeholder="Postal code" name="postCode" formControlName="postalCode" [(ngModel)]="orderData.postalCode">
+            <input matInput placeholder="Postal code" name="postCode" formControlName="postalCode"
+                   [(ngModel)]="orderData.postalCode">
           </mat-form-field>
 
           <mat-form-field color="primary">
             <mat-label>Province</mat-label>
-            <input matInput placeholder="Province" name="province" formControlName="province" [(ngModel)]="orderData.province">
+            <input matInput placeholder="Province" name="province" formControlName="province"
+                   [(ngModel)]="orderData.province">
           </mat-form-field>
 
           <mat-form-field color="primary">
             <mat-label>Country</mat-label>
-            <input matInput placeholder="Country" name="country" formControlName="country" [(ngModel)]="orderData.country">
+            <input matInput placeholder="Country" name="country" formControlName="country"
+                   [(ngModel)]="orderData.country">
           </mat-form-field>
         </div>
       </mat-card-content>
@@ -64,8 +70,8 @@
       </mat-card-footer>
     </mat-card>
   </mat-step>
-  <mat-step label="Payment info">
-    <mat-card>
+  <mat-step label="Payment"  [stepControl]="shippingForm">
+    <mat-card class="mat-card">
       <mat-card-header>
         <h2>Select payment and delivery method</h2>
       </mat-card-header>
@@ -90,12 +96,18 @@
           <h5>+0.0 €</h5>
         </mat-card>
         <mat-card class="payment">
-          <mat-checkbox (change)="onCheckboxChange()" [checked]="accTransfer" [disabled]="selectedShipment == 2">Account
-            transfer +0.0 €
-          </mat-checkbox>
-          <mat-checkbox (change)="onCheckboxChange()" [checked]="payAfterDelivery" [disabled]="selectedShipment == 2">
-            Pay after delivery +1.50 €
-          </mat-checkbox>
+          <div class="payment-picker">
+            <mat-checkbox (change)="onCheckboxChange()" [checked]="accTransfer"
+                          [disabled]="selectedShipment == 2">Account
+              transfer +0 €
+            </mat-checkbox>
+          </div>
+          <div class="payment-picker">
+            <mat-checkbox (change)="onCheckboxChange()" [checked]="payAfterDelivery"
+                          [disabled]="selectedShipment == 2">
+              To courier +1.50 €
+            </mat-checkbox>
+          </div>
         </mat-card>
       </mat-card-content>
       <mat-card-footer>
@@ -110,24 +122,24 @@
       </mat-card-footer>
     </mat-card>
   </mat-step>
-  <mat-step label="Order confirmation">
+  <mat-step label="Confirm" [stepControl]="shippingForm">
     <mat-card>
       <mat-card-header>
         <h2>Order Recapitulation:</h2>
       </mat-card-header>
       <mat-card-content>
         <div class="product-container">
-          <div class="row product align-items-center" *ngFor="let prod of basket.products">
-            <div class="col-2">
-              <img class="img" src="{{prod.product.images[0].path}}" alt="prod-img">
+          <div class="basket-item product" *ngFor="let prod of basket.products">
+            <div class="flex-item">
+              <img routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="img" src="{{prod.product.images[0].path}}" alt="prod-img">
             </div>
-            <div class="col-6 name">
+            <div class="flex-item basket-prod-name">
               <p routerLink="/store/ALL PRODUCTS/{{prod.product.id}}" class="basket-prod-name">{{prod.product.name}}</p>
             </div>
-            <div class="col-2 amount">
+            <div class="flex-item">
               <p>Amount: {{prod.amount}}</p>
             </div>
-            <div class="col-2 amount">
+            <div class="flex-item">
               <p>Price: {{prod.price.toFixed(2)}}€</p>
             </div>
           </div>
@@ -161,7 +173,7 @@
             <h5>Postal code: </h5>
             <p>{{orderData.postalCode}}</p>
           </div>
-          <div *ngIf="orderData.province != ''" class="info-row">
+          <div *ngIf="orderData.province" class="info-row">
             <h5>Province: </h5>
             <p>{{orderData.province}}</p>
           </div>

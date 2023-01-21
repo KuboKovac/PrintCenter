@@ -1,15 +1,33 @@
 <h2>Login</h2>
 
 <form [formGroup]="loginForm">
-  <mat-form-field color="primary">
-    <mat-label>Username</mat-label>
-    <input id="cyUsername" matInput placeholder="Username" formControlName="username" [(ngModel)]="login.username" name="username">
-    <mat-error *ngIf="loginForm.get('username')">Username is required</mat-error>
-  </mat-form-field>
-  <mat-form-field color="primary">
-    <mat-label>Password</mat-label>
-    <input id="cyPassword" matInput placeholder="Password" type="password" formControlName="password" [(ngModel)]="login.password" name="password">
-    <mat-error *ngIf="loginForm.get('password')">Password is required</mat-error>
-  </mat-form-field>
-  <button id="cyLoginForm" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="loginForm.invalid">Login</button>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>Username</mat-label>
+          <input id="cyUsername" matInput placeholder="Username" formControlName="username" [(ngModel)]="login.username"
+                 name="username">
+          <mat-error *ngIf="loginForm.get('username')">Username is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <mat-form-field color="primary">
+          <mat-label>Password</mat-label>
+          <input id="cyPassword" matInput placeholder="Password" type="password" formControlName="password"
+                 [(ngModel)]="login.password" name="password">
+          <mat-error *ngIf="loginForm.get('password')">Password is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <button id="cyLoginForm" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="loginForm.invalid">
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
 </form>

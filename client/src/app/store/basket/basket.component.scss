@@ -1,7 +1,9 @@
 .header-h2{
   margin: 15px 45px  15px;
 }
-
+img{
+  cursor: pointer;
+}
 .product-container{
   height: 65vh;
   overflow: scroll;
@@ -53,8 +55,25 @@
 }
 .img{
   width: 3vw;
+  min-width: 50px;
   margin: 1px 0 1px;
+}
+.basket-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-item{
+  margin: 0 10px 0;
 }
 p{
   margin: 0;
 }
+@media only screen and (max-width: 768px) {
+  .item-control{
+    justify-self: center;
+  }
+}
+

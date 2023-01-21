@@ -10,7 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatDialogModule} from "@angular/material/dialog";
 import {AuthInterceptor} from "./auth.interceptor";
-import {JwtHelperService, JwtModule} from "@auth0/angular-jwt";
+import {JwtModule} from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
