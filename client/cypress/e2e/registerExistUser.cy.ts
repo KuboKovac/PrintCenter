@@ -13,7 +13,7 @@ describe('registerExistUser.cy.ts', () => {
       'contain',
       'User successfully registered!'
     );
-    cy.get('button').contains('LOGOUT').click()
+    cy.get('button').contains('LOGOUT').click();
     cy.get('button').contains('REGISTER').click();
     cy.get('input[placeholder="Username"]').type('TestUsername20');
     cy.get('input[placeholder="Email"]').type('test3@gmail.com');
@@ -22,9 +22,6 @@ describe('registerExistUser.cy.ts', () => {
     cy.get('input[placeholder="Password"]').type('jakopako');
     cy.get('input[placeholder="Repeat password"]').type('jakopako');
     cy.get('button').contains('Register').click();
-    cy.get('.mat-simple-snackbar').should(
-      'contain',
-      'User already exist!'
-    );
+    cy.get('.mat-simple-snackbar').should('contain', 'User already exist!');
   });
 });
