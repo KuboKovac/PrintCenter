@@ -14,7 +14,7 @@ jobs:
         with:
               working-directory: ./api
               dotnet-version: '6.x.x'
-              start: dotnet run
+              start: dotnet watch run
               
       #Install NPM dependencies, cache them correctly
       #and run all cypress tests
