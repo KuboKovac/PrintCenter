@@ -3,7 +3,7 @@ name: .NET Core
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -19,4 +19,4 @@ jobs:
        working-directory: ./api
        dotnet-version: 6.x.x
     - name: Run dotnet watch
-      run: dotnet watch --project API.csproj run
+      run: dotnet watch run --project API/API.csproj
