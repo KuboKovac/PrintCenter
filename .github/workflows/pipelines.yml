@@ -14,7 +14,7 @@ jobs:
         with:
               working-directory: ./api
               dotnet-version: '6.x.x'
-              start: dotnet run
+              start: dotnet watch run
               
       #Install NPM dependencies, cache them correctly
       #and run all cypress tests
@@ -22,8 +22,10 @@ jobs:
         uses: cypress-io/github-action@v2.9.1
         with:
               working-directory: ./client
+              run: npm i
               build: npm run build
               start: npm start
+              cypress-version: '12.2.0'
               config-file: cypress.config.ts
               record: true
         env:
