@@ -19,4 +19,4 @@ jobs:
        working-directory: ./api
        dotnet-version: 6.x.x
     - name: Run dotnet watch
-      run: dotnet watch --project API.csproj run
+      run: dotnet watch --project/api/API.csproj run
