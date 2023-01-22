@@ -25,6 +25,7 @@ jobs:
               run: npm i
               build: npm run build
               start: npm start
+              cypress-version: '12.2.0'
               config-file: cypress.config.ts
               record: true
         env:
