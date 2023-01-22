@@ -2,10 +2,10 @@ describe('brands.cy.ts', () => {
   it('Cheks if after click on category shows right category', () => {
     cy.visit('http://localhost:4200/client/home');
     cy.wait(500);
+    cy.xpath('/html/body/app-root/app-nav/mat-toolbar/p[2]').click()
     cy.xpath(
       '/html/body/app-root/app-store-home/div/mat-sidenav-container/mat-sidenav[1]/div/mat-tree/mat-tree-node[3]/button/span[1]/mat-icon/div'
     ).click();
-    
     //Creality
 
     let creality;
