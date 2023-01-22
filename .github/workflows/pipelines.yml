@@ -12,7 +12,7 @@ jobs:
   
         uses: actions/setup-dotnet@v3
         with:
-              working-directory: ./api
+              working-directory: .\API\
               dotnet-version: '6.x.x'
               start: dotnet watch run
               
