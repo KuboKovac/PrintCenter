@@ -3,6 +3,21 @@ name: Cypress tests
 on: [push]
 
 jobs:
+  dotnet-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+       working-directory: ./api
+       dotnet-version: 6.x.x
+    - name: Run dotnet watch
+      run: dotnet watch run --project API/API.csproj
+
   cypress-run:
     runs-on: ubuntu-latest
     steps:
