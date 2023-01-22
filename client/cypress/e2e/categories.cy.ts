@@ -4,7 +4,7 @@ import * as cypress from 'cypress';
 
 describe('categories.cy.ts', () => {
   it('Cheks if after click on category shows right category', () => {
-    cy.visit('http://localhost:4200/client/');
+    cy.visit('http://localhost:4200/client/home');
     cy.wait(500);
     cy.xpath(
       '/html/body/app-root/app-store-home/div/mat-sidenav-container/mat-sidenav[1]/div/mat-tree/mat-tree-node[2]/button/span[1]/mat-icon/div'
