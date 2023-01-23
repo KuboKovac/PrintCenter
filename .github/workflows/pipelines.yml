@@ -28,7 +28,7 @@ jobs:
             cypress-version: '12.2.0'
             config-file: cypress.config.ts
             record: true
-            wait-on: http://localhost:7258
+            
             
       env:
         CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
