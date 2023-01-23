@@ -1,6 +1,6 @@
 describe('registerValidators.cy.ts', () => {
   it('should show validators in bad filling register', () => {
-    cy.visit('http://localhost:4200/home');
+    cy.visit('https://printcenter-676dd.web.app/');
     cy.get('button').contains('REGISTER').click();
     //lenght 5 letters in username test
     cy.get('input[placeholder="Username"]').type('da');
@@ -10,8 +10,9 @@ describe('registerValidators.cy.ts', () => {
     cy.get('input[placeholder="Email"]').type('testemailgmail.com');
     cy.get('input[placeholder="First Name"]').click();
     cy.get('mat-error').should('contain', 'Enter valid email address');
-    //Missing validator FIRST+ LAST NAME !!!!!!!
-
+    //Valid firstname / lastname
+    cy.get('input[placeholder="Last name"]').type('J');
+    cy.get('input[placeholder="Repeat password"]').click();
     // Valid password
     cy.get('input[placeholder="Password"]').type('12345');
     cy.get('input[placeholder="Repeat password"]').click();
