@@ -16,7 +16,7 @@ jobs:
        working-directory: ./api
        dotnet-version: 6.x.x
     - name: Run dotnet watch
-      run: dotnet watch run --project API/API.csproj
+      run: dotnet watch run --project API/API.csproj &
       
     - name: Cypress run
       uses: cypress-io/github-action@v2.9.1
